@@ -5,9 +5,8 @@ import { Preview } from './preview/Preview'
 
 export const Builder = () => {
   return (
-    <Flex gap16>
+    <Flex gap16 fullWidth alignStretch>
       <Designer />
-      sad
       <Preview />
     </Flex>
   )

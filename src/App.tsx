@@ -5,7 +5,7 @@ import { Flex } from './common/Flex'
 export const App = () =>  {
 
   return (
-    <Flex padding16>
+    <Flex fullWidth>
       <Builder />
     </Flex>
   )

@@ -167,16 +167,16 @@ export const Flex = React.forwardRef<HTMLDivElement, FlexProps>(({
     alignTextCenter && styles.alignCenter,
     hidden && styles.hidden,
     highlight && styles.highlight,
-    gap4 && styles.gap4,
+    gap4 && styles['gap-4'],
     gap8 && styles.gap8,
-    gap16 && styles.gap16,
+    gap16 && styles['gap-16'],
     gap24 && styles.gap24,
     gap32 && styles.gap32,
     gap4x8 && styles.gap4X8,
     rowGap4 && styles.rowGap4,
     wrap && styles.wrap,
     wrapReverse && styles.wrapReverse,
-    fullWidth && styles.fullWidth,
+    fullWidth && styles['full-width'],
     minWidth0 && styles.minWidth0,
     minHeight0 && styles.minHeight0,
     maxWidth100 && styles.maxWidth100,
@@ -210,7 +210,7 @@ export const Flex = React.forwardRef<HTMLDivElement, FlexProps>(({
     paddingTopBottom8 && styles.paddingTopBottom8,
     positionRelative && styles.positionRelative,
     displayNone && styles.displayNone,
-    grayBackground && styles.grayBackground
+    grayBackground && styles['gray-background']
   );
 
   return (

@@ -3,7 +3,7 @@ import './Designer.css'
 
 export const Designer = () => {
   return (
-    <Flex padding8>
+    <Flex fullWidth>
       Designer
     </Flex>
   )
