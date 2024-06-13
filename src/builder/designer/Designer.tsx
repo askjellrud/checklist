@@ -1,11 +1,10 @@
+import { Flex } from '../../common/Flex'
 import './Designer.css'
 
 export const Designer = () => {
   return (
-    <>
-      <div className="card">
+    <Flex padding8>
       Designer
-      </div>
-    </>
+    </Flex>
   )
 }

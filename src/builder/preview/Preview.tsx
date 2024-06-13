@@ -1,11 +1,10 @@
+import { Flex } from '../../common/Flex'
 import './Preview.css'
 
 export const Preview = () => {
   return (
-    <>
-      <div className="card">
+    <Flex padding16>
       Preview
-      </div>
-    </>
+    </Flex>
   )
 }
