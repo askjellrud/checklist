@@ -9,7 +9,13 @@ type Props = {
 };
 
 export const TextRenderer: React.FC<Props> = ({ item }) => {
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState(item.defaultValue);
+    const [defaultValue, setDefaultValue] = useState(item.defaultValue);
+
+    if (defaultValue != item.defaultValue) {
+        setValue(item.defaultValue);
+        setDefaultValue(item.defaultValue);
+    }
 
     return (
         <ItemRenderer>
