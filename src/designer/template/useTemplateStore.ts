@@ -21,18 +21,6 @@ export const useTemplateStore = create<Store>((set) => ({
         type: "title",
         label: "",
       },
-      {
-        id: randomId(),
-        type: "label",
-        label: "Hei, dette er en undersøkelse...",
-      },
-      {
-        id: randomId(),
-        type: "text",
-        label: "Hvem er du?",
-        defaultValue: "Aner ikke",
-      },
-      { id: randomId(), type: "label", label: "Nå er du ferdig." },
     ],
   },
   setTitle: (title: string) =>

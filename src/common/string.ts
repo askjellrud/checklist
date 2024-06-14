@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+
 export const randomId = () => {
-  return Math.random().toString(36).substr(2, 20);
+  return uuidv4().replace(/-/g, "");
 };
