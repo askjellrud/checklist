@@ -1,4 +1,4 @@
-import { Button, Form } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { Flex } from '../../common/Flex'
 import { useTemplateStore } from './useTemplateStore'
 import './TemplateBuilder.css'
@@ -8,20 +8,16 @@ export const TemplateBuilder = () => {
 
   return (
     <Flex vertical fullWidth padding32>
-      Name {template.name}
-      <Button>click me2</Button>
-
-      <Form>
-        <Form.Group controlId="formBasicInput">
-          <Form.Label>Text Input</Form.Label>
-          <Form.Control
+      <Flex fullWidth>
+        <Flex paddingRight16>Name</Flex>
+        <Form.Control
             type="text"
-            placeholder="Enter text"
+            placeholder="Checklist name"
             value={template.name}
             onChange={(event) => { setName(event.target.value)}}
-          />
-        </Form.Group>
-      </Form>
+        />
+      </Flex>
+
     </Flex>
   )
 }
