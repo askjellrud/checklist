@@ -11,7 +11,7 @@ export const Details: React.FC<Props> = ({ item }) => {
   const { moveItem } = useTemplateStore();
 
   return (
-    <Flex fullWidth paddingLeft16 paddingRight8 paddingBottom8>
+    <Flex style={{ backgroundColor: "#f7f7f7" }} fullWidth paddingLeft16 paddingRight8 paddingTop16 paddingBottom16>
       <Flex fullWidth paddingRight16>
         {item.type === "text" && <TextDetails item={item as TextItem} />}
       </Flex>

@@ -16,14 +16,23 @@ export const TextRenderer: React.FC<Props> = ({ item }) => {
             {item.label}
             <Flex paddingLeft16 fullWidth>
 
-                <Form.Control
+                {!item.isMultiline && <Form.Control
                     type="text"
                     placeholder="Enter text here..."
                     value={value}
                     onChange={(event) => {
                         setValue(event.target.value)
                     }}
-                />
+                />}
+
+                {item.isMultiline && <Form.Control
+                    as="textarea"
+                    rows={5}
+                    placeholder="Enter text here..."
+                    value={value}
+                    onChange={(event) => setValue(event.target.value)}
+                />}
+
             </Flex>
         </ItemRenderer>
     )

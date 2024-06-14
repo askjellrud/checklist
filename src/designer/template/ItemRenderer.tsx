@@ -42,7 +42,7 @@ export const ItemRenderer: React.FC<Props> = ({ item, children }) => {
       </Flex>
 
       <Flex vertical fullWidth>
-        <Flex fullWidth>
+        <Flex fullWidth alignStart>
           <Flex padding16 gap8 fullWidth>
             {children}
           </Flex>
@@ -55,17 +55,24 @@ export const ItemRenderer: React.FC<Props> = ({ item, children }) => {
                 <Dropdown.Item onClick={() => addItemAfter(item, { id: randomId(), type: 'label', label: "" })}>
                   <i style={{ color: "#28A745", WebkitTextStrokeWidth: "2px" }} className="bi bi-plus" />&nbsp;New label
                 </Dropdown.Item>
-                <Dropdown.Divider />
-                <Dropdown.Item onClick={() => removeItem(item)}>
-                  <i style={{ color: "#FF4B4B", WebkitTextStrokeWidth: "2px" }} className="bi bi-x" />&nbsp;Remove
-                </Dropdown.Item>
+
+                {item.type !== 'title' &&
+                  <>
+                    <Dropdown.Divider />
+                    <Dropdown.Item onClick={() => removeItem(item)}>
+                      <i style={{ color: "#FF4B4B", WebkitTextStrokeWidth: "2px" }} className="bi bi-x" />&nbsp;Remove
+                    </Dropdown.Item>
+                  </>
+                }
+
 
 
               </Dropdown.Menu>
             </Dropdown>
 
-            <i onClick={() => setShowDetails(!showDetails)} style={{ fontSize: "20px", WebkitTextStrokeWidth: "1px", color: "#777", cursor: "pointer" }} className="bi bi-three-dots" />
-
+            {item.type !== 'title' &&
+              <i onClick={() => setShowDetails(!showDetails)} style={{ fontSize: "20px", WebkitTextStrokeWidth: "1px", color: "#777", cursor: "pointer" }} className="bi bi-three-dots" />
+            }
           </Flex>
         </Flex>
         {showDetails && <Details item={item}></Details>}

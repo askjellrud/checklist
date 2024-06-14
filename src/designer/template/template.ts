@@ -22,4 +22,5 @@ export type LabelItem = Item & {
 export type TextItem = Item & {
   label: string;
   defaultValue: string;
+  isMultiline: boolean;
 };

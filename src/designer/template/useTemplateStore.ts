@@ -41,6 +41,9 @@ export const useTemplateStore = create<Store>((set) => ({
     }),
   removeItem: (item: TemplateItem) =>
     set((state) => {
+      if (item.type == "title") {
+        return state;
+      }
       const newItems = state.template.items.filter((i) => i.id !== item.id);
       return { ...state, template: { ...state.template, items: newItems } };
     }),
