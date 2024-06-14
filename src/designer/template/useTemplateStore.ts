@@ -8,6 +8,7 @@ type Store = {
   updateItem: (item: TemplateItem) => void;
   removeItem: (item: TemplateItem) => void;
   moveItem: (item: TemplateItem, direction: number) => void;
+  addItemAfter: (item: TemplateItem, newItem: TemplateItem) => void;
 };
 
 export const useTemplateStore = create<Store>((set) => ({
@@ -45,7 +46,7 @@ export const useTemplateStore = create<Store>((set) => ({
     }),
   moveItem: (item: TemplateItem, direction: number) =>
     set((state) => {
-      const items = state.template.items;
+      const items = [...state.template.items];
       const from = items.map((e) => e.id).indexOf(item.id);
       if (from <= 1 || from >= items.length) {
         return state;
@@ -55,12 +56,19 @@ export const useTemplateStore = create<Store>((set) => ({
       to = to < 1 ? 1 : to; // 0 is reserved for title
       to = to >= items.length ? items.length - 1 : to;
 
-      const newItems = [...items];
-      const temp = newItems[to];
-      newItems[to] = newItems[from];
-      newItems[from] = temp;
+      const temp = items[to];
+      items[to] = items[from];
+      items[from] = temp;
 
-      return { ...state, template: { ...state.template, items: newItems } };
+      return { ...state, template: { ...state.template, items } };
+    }),
+  addItemAfter: (item: TemplateItem, newItem: TemplateItem) =>
+    set((state) => {
+      const items = [...state.template.items];
+      const index = items.map((e) => e.id).indexOf(item.id) + 1;
+      items.splice(index, 0, newItem);
+
+      return { ...state, template: { ...state.template, items } };
     }),
   updateItem: (item: TemplateItem) =>
     set((state) => {

@@ -5,6 +5,7 @@ import React, { ReactNode, useState } from 'react';
 import { IconToggle } from '../../../common/IconToggle';
 import { TemplateItem } from '../template';
 import { useTemplateStore } from '../useTemplateStore';
+import { randomId } from '../../../common/string';
 
 type Props = {
   children: ReactNode;
@@ -14,7 +15,7 @@ type Props = {
 
 
 export const ItemRenderer: React.FC<Props> = ({ item, children }) => {
-  const { removeItem, moveItem } = useTemplateStore();
+  const { removeItem, moveItem, addItemAfter } = useTemplateStore();
 
   return (
     <Flex alignStart style={{ border: "1px solid #eee", position: 'relative' }} fullWidth>
@@ -41,6 +42,11 @@ export const ItemRenderer: React.FC<Props> = ({ item, children }) => {
         <Dropdown>
           <Dropdown.Toggle as={IconToggle}><i style={{ fontSize: "20px", WebkitTextStrokeWidth: "1px", color: "#777" }} className="bi bi-list" /></Dropdown.Toggle>
           <Dropdown.Menu>
+
+            <Dropdown.Item onClick={() => addItemAfter(item, { id: randomId(), type: 'label', label: "" })}>
+              <i style={{ color: "red", WebkitTextStrokeWidth: "2px" }} className="bi bi-plus" />&nbsp;New label
+            </Dropdown.Item>
+            <Dropdown.Divider />
             <Dropdown.Item onClick={() => removeItem(item)}>
               <i style={{ color: "red", WebkitTextStrokeWidth: "2px" }} className="bi bi-x" />&nbsp;Remove
             </Dropdown.Item>
