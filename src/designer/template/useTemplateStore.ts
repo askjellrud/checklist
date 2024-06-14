@@ -7,6 +7,7 @@ type Store = {
   setTitle: (title: string) => void;
   updateItem: (item: TemplateItem) => void;
   removeItem: (item: TemplateItem) => void;
+  moveItem: (item: TemplateItem, direction: number) => void;
 };
 
 export const useTemplateStore = create<Store>((set) => ({
@@ -40,6 +41,25 @@ export const useTemplateStore = create<Store>((set) => ({
   removeItem: (item: TemplateItem) =>
     set((state) => {
       const newItems = state.template.items.filter((i) => i.id !== item.id);
+      return { ...state, template: { ...state.template, items: newItems } };
+    }),
+  moveItem: (item: TemplateItem, direction: number) =>
+    set((state) => {
+      const items = state.template.items;
+      const from = items.map((e) => e.id).indexOf(item.id);
+      if (from <= 1 || from >= items.length) {
+        return state;
+      }
+
+      let to = from + direction;
+      to = to < 1 ? 1 : to; // 0 is reserved for title
+      to = to >= items.length ? items.length - 1 : to;
+
+      const newItems = [...items];
+      const temp = newItems[to];
+      newItems[to] = newItems[from];
+      newItems[from] = temp;
+
       return { ...state, template: { ...state.template, items: newItems } };
     }),
   updateItem: (item: TemplateItem) =>

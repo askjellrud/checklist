@@ -1,7 +1,7 @@
 
 import { Dropdown } from 'react-bootstrap';
 import { Flex } from '../../../common/Flex';
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { IconToggle } from '../../../common/IconToggle';
 import { TemplateItem } from '../template';
 import { useTemplateStore } from '../useTemplateStore';
@@ -14,7 +14,7 @@ type Props = {
 
 
 export const ItemRenderer: React.FC<Props> = ({ item, children }) => {
-  const { removeItem } = useTemplateStore();
+  const { removeItem, moveItem } = useTemplateStore();
 
   return (
     <Flex alignStart style={{ border: "1px solid #eee", position: 'relative' }} fullWidth>
@@ -44,6 +44,8 @@ export const ItemRenderer: React.FC<Props> = ({ item, children }) => {
             <Dropdown.Item onClick={() => removeItem(item)}>
               <i style={{ color: "red", WebkitTextStrokeWidth: "2px" }} className="bi bi-x" />&nbsp;Remove
             </Dropdown.Item>
+
+
           </Dropdown.Menu>
         </Dropdown>
       </Flex>
@@ -54,10 +56,10 @@ export const ItemRenderer: React.FC<Props> = ({ item, children }) => {
         <Dropdown>
           <Dropdown.Toggle as={IconToggle} ><i style={{ fontSize: "14px", WebkitTextStrokeWidth: "0.7px", color: "#999" }} className="bi bi-arrow-down-up" /></Dropdown.Toggle>
           <Dropdown.Menu>
-            <Dropdown.Item onClick={() => removeItem(item)}>
+            <Dropdown.Item onClick={() => moveItem(item, -1)}>
               <i style={{ WebkitTextStrokeWidth: "2px" }} className="bi bi-arrow-up" />&nbsp;Move up
             </Dropdown.Item>
-            <Dropdown.Item onClick={() => removeItem(item)}>
+            <Dropdown.Item onClick={() => moveItem(item, 1)}>
               <i style={{ WebkitTextStrokeWidth: "2px" }} className="bi bi-arrow-down" />&nbsp;Move down
             </Dropdown.Item>
           </Dropdown.Menu>
