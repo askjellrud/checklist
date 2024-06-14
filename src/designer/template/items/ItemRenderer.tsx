@@ -39,8 +39,7 @@ export const ItemRenderer: React.FC<Props> = ({ item, children }) => {
 
       <Flex vertical paddingLeft8 paddingTop8>
         <Dropdown>
-          <Dropdown.Toggle as={IconToggle} />
-
+          <Dropdown.Toggle as={IconToggle}><i style={{ fontSize: "20px", WebkitTextStrokeWidth: "1px", color: "#777" }} className="bi bi-list" /></Dropdown.Toggle>
           <Dropdown.Menu>
             <Dropdown.Item onClick={() => removeItem(item)}>
               <i style={{ color: "red", WebkitTextStrokeWidth: "2px" }} className="bi bi-x" />&nbsp;Remove
@@ -51,9 +50,18 @@ export const ItemRenderer: React.FC<Props> = ({ item, children }) => {
       <Flex padding16 gap8 fullWidth>
         {children}
       </Flex>
-      <Flex vertical paddingRight8 paddingTop4 paddingBottom4>
-        <i className="bi bi-arrow-up-square-fill" style={{ fontSize: "20px", color: "#999" }}></i>
-        <i className="bi bi-arrow-down-square-fill" style={{ fontSize: "20px", color: "#999" }}></i>
+      <Flex vertical paddingRight8 paddingTop8 paddingBottom4>
+        <Dropdown>
+          <Dropdown.Toggle as={IconToggle} ><i style={{ fontSize: "14px", WebkitTextStrokeWidth: "0.7px", color: "#999" }} className="bi bi-arrow-down-up" /></Dropdown.Toggle>
+          <Dropdown.Menu>
+            <Dropdown.Item onClick={() => removeItem(item)}>
+              <i style={{ WebkitTextStrokeWidth: "2px" }} className="bi bi-arrow-up" />&nbsp;Move up
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => removeItem(item)}>
+              <i style={{ WebkitTextStrokeWidth: "2px" }} className="bi bi-arrow-down" />&nbsp;Move down
+            </Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
       </Flex>
     </Flex >
   )

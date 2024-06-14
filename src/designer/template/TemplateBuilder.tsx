@@ -1,4 +1,3 @@
-import { Form } from 'react-bootstrap';
 import { Flex } from '../../common/Flex'
 import { useTemplateStore } from './useTemplateStore'
 import { LabelRenderer } from './items/LabelRenderer';
@@ -7,7 +6,7 @@ import { TextRenderer } from './items/TextRenderer';
 import { TitleRenderer } from './items/TitleRenderer';
 
 export const TemplateBuilder = () => {
-  const { template, setTitle } = useTemplateStore();
+  const { template } = useTemplateStore();
 
   return (
     <Flex vertical fullWidth padding32 gap16>

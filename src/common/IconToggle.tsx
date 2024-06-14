@@ -5,15 +5,15 @@ interface CustomToggleProps {
     children: React.ReactNode;
 }
 
-export const IconToggle = React.forwardRef<HTMLSpanElement, CustomToggleProps>(({ onClick }, ref) => (
+export const IconToggle = React.forwardRef<HTMLSpanElement, CustomToggleProps>(({ onClick, children }, ref) => (
     <span
         ref={ref}
         onClick={(e) => {
             e.preventDefault();
             onClick(e);
         }}
-        style={{ cursor: 'pointer', fontSize: "20px", WebkitTextStrokeWidth: "1px", color: "#777" }}
+        style={{ cursor: 'pointer' }}
     >
-        <i className="bi bi-list"></i>
+        {children}
     </span>
 ));
