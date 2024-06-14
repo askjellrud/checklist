@@ -10,7 +10,7 @@ type Props = {
 
 
 
-export const ChecklistItem: React.FC<Props> = ({ children }) => {
+export const ItemRenderer: React.FC<Props> = ({ children }) => {
   return (
     <Flex alignStart style={{ border: "1px solid #eee" }} fullWidth>
       <Flex vertical padding4>

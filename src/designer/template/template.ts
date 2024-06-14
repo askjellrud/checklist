@@ -1,23 +1,21 @@
-import { LabelItem } from "./items/LabelItem";
-
 export type Template = {
   id: string;
   title: string;
-  items: (LabelItem | TextItem)[];
+  items: TemplateItem[];
 };
 
-type TemplateItem = {
+export type TemplateItem = LabelItem | TextItem;
+
+type Item = {
   id: string;
   type: "label" | "text";
 };
 
-type LabelItem = TemplateItem & {
+export type LabelItem = Item & {
   label: string;
-  type: "label";
 };
 
-type TextItem = TemplateItem & {
+export type TextItem = Item & {
   label: string;
-  value: string;
-  type: "text";
+  defaultValue: string;
 };

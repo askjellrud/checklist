@@ -1,7 +1,8 @@
 import { Flex } from '../../common/Flex'
+import { LabelItem, TextItem } from '../template/template';
 import { useTemplateStore } from '../template/useTemplateStore';
-import { ChecklistItem } from './ChecklistItem';
-import { LabelItem } from './LabelItem';
+import { LabelRenderer } from './LabelRenderer';
+import { TextRenderer } from './TextRenderer';
 
 export const Preview = () => {
   const { template } = useTemplateStore();
@@ -14,7 +15,10 @@ export const Preview = () => {
       </Flex>
 
       {template.items.map((item, index) => {
-        if (item.type === 'label') return (<LabelItem key={index} label={item.label} />);
+        if (item.type === 'label') return (
+          <LabelRenderer key={index} item={item as LabelItem} />);
+        if (item.type === 'text') return (
+          <TextRenderer key={index} item={item as TextItem} />);
         return null;
       })}
 

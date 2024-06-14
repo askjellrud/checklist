@@ -6,9 +6,7 @@ type Props = {
   children: ReactNode;
 };
 
-
-
-export const ChecklistItem: React.FC<Props> = ({ children }) => {
+export const ItemRenderer: React.FC<Props> = ({ children }) => {
   return (
     <Flex alignStart padding8 fullWidth>
       {children}
