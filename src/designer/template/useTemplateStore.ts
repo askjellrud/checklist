@@ -1,5 +1,5 @@
-import create from 'zustand';
-import { Template } from './template';
+import create from "zustand";
+import { Template } from "./template";
 
 type Store = {
   template: Template;
@@ -7,8 +7,9 @@ type Store = {
 };
 
 export const useTemplateStore = create<Store>((set) => ({
-  template: { name: "todo" },
-  setName: (name : string) => set(state => {
-    return { ...state, template: { ...state.template, name} };
-})
+  template: { name: "" },
+  setName: (name: string) =>
+    set((state) => {
+      return { ...state, template: { ...state.template, name } };
+    }),
 }));

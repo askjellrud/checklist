@@ -1,6 +1,6 @@
 import { Flex } from '../common/Flex'
-import './Designer.css'
 import { TemplateBuilder } from './template/TemplateBuilder'
+import './Designer.css'
 import { Preview } from './preview/Preview'
 
 export const Designer = () => {
