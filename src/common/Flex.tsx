@@ -155,7 +155,7 @@ export const Flex = React.forwardRef<HTMLDivElement, FlexProps>(({
     !inline && styles.flex,
     inline && styles.inlineFlex,
     direction,
-    (!!onClick || pointer) && styles.cursorPointer,
+    (!!onClick || pointer) && styles['cursor-pointer'],
     spaceBetween && styles.spaceBetween,
     spaceAround && styles.spaceAround,
     center && styles.center,

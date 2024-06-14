@@ -1,7 +1,6 @@
 import { Form } from "react-bootstrap";
-import { Flex } from "../../../common/Flex";
 import { TextItem } from "../template";
-import { ItemRenderer } from "./ItemRenderer";
+import { ItemRenderer } from "../ItemRenderer";
 import { useTemplateStore } from "../useTemplateStore";
 
 type Props = {

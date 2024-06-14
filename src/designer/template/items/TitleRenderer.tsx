@@ -1,6 +1,6 @@
 import { Form } from "react-bootstrap";
 import { LabelItem } from "../template";
-import { ItemRenderer } from "./ItemRenderer";
+import { ItemRenderer } from "../ItemRenderer";
 import { useTemplateStore } from "../useTemplateStore";
 
 type Props = {

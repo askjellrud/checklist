@@ -48,7 +48,7 @@ export const useTemplateStore = create<Store>((set) => ({
     set((state) => {
       const items = [...state.template.items];
       const from = items.map((e) => e.id).indexOf(item.id);
-      if (from <= 1 || from >= items.length) {
+      if (from < 1 || from >= items.length) {
         return state;
       }
 
