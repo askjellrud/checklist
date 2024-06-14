@@ -1,6 +1,6 @@
 
 import React, { ReactNode } from 'react';
-import { Flex } from '../../common/Flex';
+import { Flex } from '../../../common/Flex';
 
 type Props = {
   children: ReactNode;

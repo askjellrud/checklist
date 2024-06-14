@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { TextItem } from "../template/template";
+import { TextItem } from "../../template/template";
 import { ItemRenderer } from "./ItemRenderer";
 import { Form } from "react-bootstrap";
-import { Flex } from "../../common/Flex";
+import { Flex } from "../../../common/Flex";
 
 type Props = {
     item: TextItem;

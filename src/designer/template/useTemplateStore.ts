@@ -16,6 +16,11 @@ export const useTemplateStore = create<Store>((set) => ({
     items: [
       {
         id: randomId(),
+        type: "title",
+        label: "",
+      },
+      {
+        id: randomId(),
         type: "label",
         label: "Hei, dette er en undersøkelse...",
       },

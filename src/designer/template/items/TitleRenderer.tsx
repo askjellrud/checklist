@@ -7,14 +7,14 @@ type Props = {
   item: LabelItem;
 };
 
-export const LabelRenderer: React.FC<Props> = ({ item }) => {
+export const TitleRenderer: React.FC<Props> = ({ item }) => {
   const { updateItem } = useTemplateStore();
 
   return (
     <ItemRenderer item={item}>
       <Form.Control
         type="text"
-        placeholder="Enter label here..."
+        placeholder=""
         value={item.label}
         onChange={(event) => {
           item.label = event.target.value;
