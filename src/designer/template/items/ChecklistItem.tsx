@@ -12,8 +12,8 @@ type Props = {
 
 export const ChecklistItem: React.FC<Props> = ({ children }) => {
   return (
-    <Flex style={{ border: "1px solid #eee" }} fullWidth>
-      <Flex vertical>
+    <Flex alignStart style={{ border: "1px solid #eee" }} fullWidth>
+      <Flex vertical padding4>
         <Dropdown>
           <Dropdown.Toggle as={IconToggle} />
 
@@ -22,7 +22,7 @@ export const ChecklistItem: React.FC<Props> = ({ children }) => {
           </Dropdown.Menu>
         </Dropdown>
       </Flex>
-      <Flex padding32>
+      <Flex padding16 fullWidth>
         {children}
       </Flex>
     </Flex>

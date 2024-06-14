@@ -12,8 +12,8 @@ export const IconToggle = React.forwardRef<HTMLSpanElement, CustomToggleProps>((
             e.preventDefault();
             onClick(e);
         }}
-        style={{ cursor: 'pointer' }}
+        style={{ cursor: 'pointer', fontSize: "24px", WebkitTextStrokeWidth: "1px" }}
     >
-        <i className="bi bi-airplane-engines-fill"></i>
+        <i className="bi bi-list"></i>
     </span>
 ));
