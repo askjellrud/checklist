@@ -6,8 +6,9 @@ export const TemplateBuilder = () => {
   const designer = useDesignerStore();
 
   return (
-    <Flex fullWidth>
+    <Flex vertical fullWidth padding32>
       Name {designer.template.name}
+      <button className="btn btn-primary">Click me</button>
     </Flex>
   )
 }
