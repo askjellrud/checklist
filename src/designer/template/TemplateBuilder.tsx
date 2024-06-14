@@ -1,7 +1,6 @@
 import { Form } from 'react-bootstrap';
 import { Flex } from '../../common/Flex'
 import { useTemplateStore } from './useTemplateStore'
-import './TemplateBuilder.css'
 import { LabelItem } from './items/LabelItem';
 
 export const TemplateBuilder = () => {
@@ -19,7 +18,10 @@ export const TemplateBuilder = () => {
         />
       </Flex>
 
-      <LabelItem label='Hello world' />
+      {template.items.map((item, index) => {
+        if (item.type === 'label') return (<LabelItem key={index} label={item.label} />);
+        return null;
+      })};
 
     </Flex>
   )

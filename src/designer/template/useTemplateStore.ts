@@ -7,7 +7,14 @@ type Store = {
 };
 
 export const useTemplateStore = create<Store>((set) => ({
-  template: { name: "" },
+  template: {
+    id: "",
+    name: "",
+    items: [
+      { id: "", type: "label", label: "Hvem er du?" },
+      { id: "", type: "label", label: "Hvem er du?" },
+    ],
+  },
   setName: (name: string) =>
     set((state) => {
       return { ...state, template: { ...state.template, name } };

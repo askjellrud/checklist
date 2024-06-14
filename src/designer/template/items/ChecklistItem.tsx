@@ -25,6 +25,10 @@ export const ChecklistItem: React.FC<Props> = ({ children }) => {
       <Flex padding16 fullWidth>
         {children}
       </Flex>
-    </Flex>
+      <Flex vertical paddingRight8 paddingTop4 paddingBottom4>
+        <i className="bi bi-arrow-up-square-fill" style={{ fontSize: "20px", color: "#999" }}></i>
+        <i className="bi bi-arrow-down-square-fill" style={{ fontSize: "20px", color: "#999" }}></i>
+      </Flex>
+    </Flex >
   )
 }

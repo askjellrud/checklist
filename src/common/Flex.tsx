@@ -6,76 +6,76 @@ import styles from './Flex.module.scss';
 // Only "standard" widths (4-8-16-32) should be defined here, other widths should be added as className
 
 export type FlexProps = {
-    id?: string;
-    vertical?: boolean;
-    horizontalReverse?: boolean;
-    className?: string;
-    title?: string;
-    onClick?: React.MouseEventHandler<HTMLDivElement>;
-    onDoubleClick?: React.MouseEventHandler<HTMLDivElement>;
-    pointer?: boolean;
-    name?: string; // Name of the flex to be able to identify it in the dom
-    dataCy?: string;
+  id?: string;
+  vertical?: boolean;
+  horizontalReverse?: boolean;
+  className?: string;
+  title?: string;
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
+  onDoubleClick?: React.MouseEventHandler<HTMLDivElement>;
+  pointer?: boolean;
+  name?: string; // Name of the flex to be able to identify it in the dom
+  dataCy?: string;
 
-    inline?: boolean;
-    fullWidth?: boolean;
-    fullHeight?: boolean;
-    grow1?: boolean;
-    basis0?: boolean;
-    shrink0?: boolean;
-    spaceBetween?: boolean;
-    spaceAround?: boolean;
-    center?: boolean;
-    rightAlign?: boolean;
-    marginLeftAuto?: boolean; // This is used to right align self inside a parent flex in cases there are no left items
-    alignEnd?: boolean;
-    alignStart?: boolean;
-    alignStretch?: boolean;
-    alignTextCenter?: boolean;
-    hidden?: boolean;
-    displayNone?: boolean;
-    highlight?: boolean;
-    gap4?: boolean;
-    gap8?: boolean;
-    gap16?: boolean;
-    gap24?: boolean;
-    gap32?: boolean;
-    gap4x8?: boolean;
-    rowGap4?: boolean;
-    overflowAuto?: boolean;
-    // We should try to use most padding (not margin) and let parent control margin
-    padding4?: boolean;
-    padding8?: boolean;
-    padding16?: boolean;
-    padding32?: boolean;
-    paddingBottom4?: boolean;
-    paddingBottom8?: boolean;
-    paddingBottom16?: boolean;
-    paddingBottom24?: boolean;
-    paddingBottom32?: boolean;
-    paddingLeft4?: boolean;
-    paddingLeft8?: boolean;
-    paddingLeft16?: boolean;
-    paddingLeftRight16?: boolean;
-    paddingLeftRight24?: boolean;
-    paddingRight4?: boolean;
-    paddingRight8?: boolean;
-    paddingRight16?: boolean;
-    paddingRight24?: boolean;
-    paddingTop4?: boolean;
-    paddingTop8?: boolean;
-    paddingTop16?: boolean;
-    paddingTopBottom4?: boolean;
-    paddingTopBottom8?: boolean;
-    positionRelative?: boolean;
-    wrap?: boolean;
-    wrapReverse?: boolean;
-    maxWidth100?: boolean;
-    minWidth0?: boolean;
-    minHeight0?: boolean;
-    children?: ReactNode;
-    style?: React.CSSProperties;
-    grayBackground?: boolean;
+  inline?: boolean;
+  fullWidth?: boolean;
+  fullHeight?: boolean;
+  grow1?: boolean;
+  basis0?: boolean;
+  shrink0?: boolean;
+  spaceBetween?: boolean;
+  spaceAround?: boolean;
+  center?: boolean;
+  rightAlign?: boolean;
+  marginLeftAuto?: boolean; // This is used to right align self inside a parent flex in cases there are no left items
+  alignEnd?: boolean;
+  alignStart?: boolean;
+  alignStretch?: boolean;
+  alignTextCenter?: boolean;
+  hidden?: boolean;
+  displayNone?: boolean;
+  highlight?: boolean;
+  gap4?: boolean;
+  gap8?: boolean;
+  gap16?: boolean;
+  gap24?: boolean;
+  gap32?: boolean;
+  gap4x8?: boolean;
+  rowGap4?: boolean;
+  overflowAuto?: boolean;
+  // We should try to use most padding (not margin) and let parent control margin
+  padding4?: boolean;
+  padding8?: boolean;
+  padding16?: boolean;
+  padding32?: boolean;
+  paddingBottom4?: boolean;
+  paddingBottom8?: boolean;
+  paddingBottom16?: boolean;
+  paddingBottom24?: boolean;
+  paddingBottom32?: boolean;
+  paddingLeft4?: boolean;
+  paddingLeft8?: boolean;
+  paddingLeft16?: boolean;
+  paddingLeftRight16?: boolean;
+  paddingLeftRight24?: boolean;
+  paddingRight4?: boolean;
+  paddingRight8?: boolean;
+  paddingRight16?: boolean;
+  paddingRight24?: boolean;
+  paddingTop4?: boolean;
+  paddingTop8?: boolean;
+  paddingTop16?: boolean;
+  paddingTopBottom4?: boolean;
+  paddingTopBottom8?: boolean;
+  positionRelative?: boolean;
+  wrap?: boolean;
+  wrapReverse?: boolean;
+  maxWidth100?: boolean;
+  minWidth0?: boolean;
+  minHeight0?: boolean;
+  children?: ReactNode;
+  style?: React.CSSProperties;
+  grayBackground?: boolean;
 };
 
 export const Flex = React.forwardRef<HTMLDivElement, FlexProps>(({
@@ -206,8 +206,8 @@ export const Flex = React.forwardRef<HTMLDivElement, FlexProps>(({
     paddingTop4 && styles['padding-top-4'],
     paddingTop8 && styles['padding-top-8'],
     paddingTop16 && styles['padding-top-16'],
-    paddingTopBottom4 && styles.paddingTopBottom4,
-    paddingTopBottom8 && styles.paddingTopBottom8,
+    paddingTopBottom4 && styles['padding-bottom-4'],
+    paddingTopBottom8 && styles['padding-bottom-8'],
     positionRelative && styles.positionRelative,
     displayNone && styles.displayNone,
     grayBackground && styles['gray-background']
