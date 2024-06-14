@@ -14,7 +14,7 @@ export const TemplateBuilder = () => {
         <Flex paddingRight16>Title</Flex>
         <Form.Control
           type="text"
-          placeholder="Checklist name"
+          placeholder=""
           value={template.title}
           onChange={(event) => { setTitle(event.target.value) }}
         />
@@ -26,7 +26,7 @@ export const TemplateBuilder = () => {
         if (item.type === 'text') return (
           <TextRenderer key={index} item={item as TextItem} />);
         return null;
-      })};
+      })}
 
     </Flex>
   )

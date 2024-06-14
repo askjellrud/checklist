@@ -12,11 +12,19 @@ export const TextRenderer: React.FC<Props> = ({ item }) => {
   const { updateItem } = useTemplateStore();
 
   return (
-    <ItemRenderer>
-      <Flex paddingRight16>{item.label}</Flex>
+    <ItemRenderer item={item}>
       <Form.Control
         type="text"
-        placeholder="Checklist name"
+        placeholder="Label"
+        value={item.label}
+        onChange={(event) => {
+          item.label = event.target.value;
+          updateItem(item);
+        }}
+      />
+      <Form.Control
+        type="text"
+        placeholder="Default value"
         value={item.defaultValue}
         onChange={(event) => {
           item.defaultValue = event.target.value;

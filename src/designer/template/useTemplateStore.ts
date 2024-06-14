@@ -6,6 +6,7 @@ type Store = {
   template: Template;
   setTitle: (title: string) => void;
   updateItem: (item: TemplateItem) => void;
+  removeItem: (item: TemplateItem) => void;
 };
 
 export const useTemplateStore = create<Store>((set) => ({
@@ -30,6 +31,11 @@ export const useTemplateStore = create<Store>((set) => ({
   setTitle: (title: string) =>
     set((state) => {
       return { ...state, template: { ...state.template, title } };
+    }),
+  removeItem: (item: TemplateItem) =>
+    set((state) => {
+      const newItems = state.template.items.filter((i) => i.id !== item.id);
+      return { ...state, template: { ...state.template, items: newItems } };
     }),
   updateItem: (item: TemplateItem) =>
     set((state) => {

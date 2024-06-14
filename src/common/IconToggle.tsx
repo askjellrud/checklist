@@ -12,7 +12,7 @@ export const IconToggle = React.forwardRef<HTMLSpanElement, CustomToggleProps>((
             e.preventDefault();
             onClick(e);
         }}
-        style={{ cursor: 'pointer', fontSize: "24px", WebkitTextStrokeWidth: "1px" }}
+        style={{ cursor: 'pointer', fontSize: "20px", WebkitTextStrokeWidth: "1px", color: "#777" }}
     >
         <i className="bi bi-list"></i>
     </span>

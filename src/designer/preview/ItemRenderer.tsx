@@ -8,7 +8,7 @@ type Props = {
 
 export const ItemRenderer: React.FC<Props> = ({ children }) => {
   return (
-    <Flex alignStart padding8 fullWidth>
+    <Flex vertical gap8 alignStart padding8 fullWidth>
       {children}
     </Flex >
   )
