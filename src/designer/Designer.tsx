@@ -6,7 +6,7 @@ import { Preview } from './preview/Preview'
 export const Designer = () => {
 
   return (
-    <Flex gap4 fullWidth alignStretch>
+    <Flex gap4 fullWidth fullHeight alignStart>
       <TemplateBuilder />
       <Preview />
     </Flex>

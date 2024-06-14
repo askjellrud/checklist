@@ -6,7 +6,7 @@ export const Preview = () => {
   const { template } = useTemplateStore();
 
   return (
-    <Flex fullWidth>
+    <Flex vertical style={{ borderLeft: "1px solid #ccc" }} padding32 fullWidth fullHeight>
       {template.name}
     </Flex>
   )
