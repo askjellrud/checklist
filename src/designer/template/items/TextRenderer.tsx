@@ -22,15 +22,6 @@ export const TextRenderer: React.FC<Props> = ({ item }) => {
           updateItem(item);
         }}
       />
-      <Form.Control
-        type="text"
-        placeholder="Default value"
-        value={item.defaultValue}
-        onChange={(event) => {
-          item.defaultValue = event.target.value;
-          updateItem(item);
-        }}
-      />
     </ItemRenderer>
   )
 }
