@@ -1,12 +1,12 @@
 import './App.css'
-import { Builder } from './builder/Builder'
+import { Designer } from './designer/Designer'
 import { Flex } from './common/Flex'
 
 export const App = () =>  {
 
   return (
     <Flex fullWidth>
-      <Builder />
+      <Designer />
     </Flex>
   )
 }
