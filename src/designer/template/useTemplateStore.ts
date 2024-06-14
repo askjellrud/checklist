@@ -3,20 +3,20 @@ import { Template } from "./template";
 
 type Store = {
   template: Template;
-  setName: (name: string) => void;
+  setTitle: (title: string) => void;
 };
 
 export const useTemplateStore = create<Store>((set) => ({
   template: {
     id: "",
-    name: "",
+    title: "",
     items: [
       { id: "", type: "label", label: "Hvem er du?" },
       { id: "", type: "label", label: "Hvem er du?" },
     ],
   },
-  setName: (name: string) =>
+  setTitle: (title: string) =>
     set((state) => {
-      return { ...state, template: { ...state.template, name } };
+      return { ...state, template: { ...state.template, title } };
     }),
 }));

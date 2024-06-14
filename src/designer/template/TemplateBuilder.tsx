@@ -4,17 +4,17 @@ import { useTemplateStore } from './useTemplateStore'
 import { LabelItem } from './items/LabelItem';
 
 export const TemplateBuilder = () => {
-  const { template, setName } = useTemplateStore();
+  const { template, setTitle } = useTemplateStore();
 
   return (
     <Flex vertical fullWidth padding32 gap16>
       <Flex fullWidth>
-        <Flex paddingRight16>Name</Flex>
+        <Flex paddingRight16>Title</Flex>
         <Form.Control
           type="text"
           placeholder="Checklist name"
-          value={template.name}
-          onChange={(event) => { setName(event.target.value) }}
+          value={template.title}
+          onChange={(event) => { setTitle(event.target.value) }}
         />
       </Flex>
 

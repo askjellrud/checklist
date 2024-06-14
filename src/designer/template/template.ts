@@ -2,7 +2,7 @@ import { LabelItem } from "./items/LabelItem";
 
 export type Template = {
   id: string;
-  name: string;
+  title: string;
   items: (LabelItem | TextItem)[];
 };
 
