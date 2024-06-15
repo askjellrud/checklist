@@ -20,7 +20,7 @@ export const ItemRenderer: React.FC<Props> = ({ item, children }) => {
   const [showDetails, setShowDetails] = useState<boolean>(false);
 
   return (
-    <Flex maxHeight100 alignStart style={{ border: "1px solid #eee", position: 'relative' }} fullWidth>
+    <Flex maxHeight100 alignStart style={{ border: "1px solid #aaa", position: 'relative' }} fullWidth>
 
       <Flex style={{
         position: 'absolute',
@@ -34,8 +34,8 @@ export const ItemRenderer: React.FC<Props> = ({ item, children }) => {
         backgroundColor: "white",
         paddingLeft: "4px",
         paddingRight: "4px",
-        borderLeft: "1px solid #ddd",
-        borderRight: "1px solid #ddd",
+        borderLeft: "1px solid #ccc",
+        borderRight: "1px solid #ccc",
         height: "10px"
       }}>
         {item.type}

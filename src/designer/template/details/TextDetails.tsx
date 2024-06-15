@@ -13,7 +13,7 @@ export const TextDetails: React.FC<Props> = ({ item }) => {
     return (
         <Flex vertical fullWidth gap8>
             <Flex fullWidth gap8>
-                <Flex style={{ whiteSpace: "nowrap" }}>
+                <Flex style={{ whiteSpace: "nowrap", color: "#666" }}>
                     Default value
                 </Flex>
                 <Form.Control
@@ -28,6 +28,7 @@ export const TextDetails: React.FC<Props> = ({ item }) => {
             </Flex>
             <Flex>
                 <Form.Check
+                    style={{ color: "#666" }}
                     type="checkbox"
                     label="Multiline"
                     checked={item.isMultiline}

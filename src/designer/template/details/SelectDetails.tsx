@@ -12,10 +12,11 @@ export const SelectDetails: React.FC<Props> = ({ item }) => {
 
     return (
         <Flex vertical fullWidth gap8>
-            <Flex fullWidth gap8>
+            <Flex style={{ color: "#666" }} fullWidth gap8>
                 Select type
                 <Flex>
                     <Form.Select
+                        style={{ color: "#666" }}
                         onChange={(event) => {
                             updateItem({ ...item, style: event.target.value as SelectItemStyle });
                         }}>

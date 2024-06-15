@@ -13,7 +13,7 @@ export const SelectRenderer: React.FC<Props> = ({ item }) => {
 
   return (
     <ItemRenderer item={item}>
-      <Flex fullWidth gap8 vertical>
+      <Flex fullWidth style={{ color: "#666" }} gap8 vertical>
 
         <Form.Control
           type="text"
