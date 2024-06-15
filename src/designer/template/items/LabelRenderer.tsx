@@ -14,7 +14,7 @@ export const LabelRenderer: React.FC<Props> = ({ item }) => {
     <ItemRenderer item={item}>
       <Form.Control
         type="text"
-        placeholder="Enter label here..."
+        placeholder=""
         value={item.label}
         onChange={(event) => {
           item.label = event.target.value;

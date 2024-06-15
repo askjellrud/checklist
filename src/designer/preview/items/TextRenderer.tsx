@@ -24,7 +24,7 @@ export const TextRenderer: React.FC<Props> = ({ item }) => {
 
                 {!item.isMultiline && <Form.Control
                     type="text"
-                    placeholder="Enter text here..."
+                    placeholder=""
                     value={value}
                     onChange={(event) => {
                         setValue(event.target.value)
@@ -34,7 +34,7 @@ export const TextRenderer: React.FC<Props> = ({ item }) => {
                 {item.isMultiline && <Form.Control
                     as="textarea"
                     rows={5}
-                    placeholder="Enter text here..."
+                    placeholder=""
                     value={value}
                     onChange={(event) => setValue(event.target.value)}
                 />}

@@ -1,5 +1,5 @@
 import { Form } from "react-bootstrap";
-import { LabelItem, TitleItem } from "../template";
+import { TitleItem } from "../template";
 import { ItemRenderer } from "../ItemRenderer";
 import { useTemplateStore } from "../useTemplateStore";
 

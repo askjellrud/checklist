@@ -17,7 +17,7 @@ export const SelectRenderer: React.FC<Props> = ({ item }) => {
 
         <Form.Control
           type="text"
-          placeholder="Label"
+          placeholder=""
           value={item.label}
           onChange={(event) => {
             item.label = event.target.value;
@@ -31,7 +31,7 @@ export const SelectRenderer: React.FC<Props> = ({ item }) => {
             -
             <Form.Control
               type="text"
-              placeholder="Label"
+              placeholder=""
               value={option}
               onChange={(event) => {
                 item.options[index] = event.target.value;

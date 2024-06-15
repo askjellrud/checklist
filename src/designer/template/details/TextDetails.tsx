@@ -18,7 +18,7 @@ export const TextDetails: React.FC<Props> = ({ item }) => {
                 </Flex>
                 <Form.Control
                     type="text"
-                    placeholder="Default value..."
+                    placeholder=""
                     value={item.defaultValue}
                     onChange={(event) => {
                         item.defaultValue = event.target.value;
