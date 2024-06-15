@@ -10,7 +10,8 @@ export const TemplateBuilder = () => {
   const { template } = useTemplateStore();
 
   return (
-    <Flex style={{ overflow: "auto" }} vertical fullHeight fullWidth padding32 gap16>
+    <Flex style={{ overflow: "auto", resize: "horizontal" }} vertical fullHeight fullWidth padding32 gap16>
+
       {template.items.map((item) => {
         if (item.type === 'label') return (
           <LabelRenderer key={item.id} item={item as LabelItem} />);
