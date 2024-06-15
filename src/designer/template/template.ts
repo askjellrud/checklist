@@ -27,9 +27,11 @@ export type TextItem = Item & {
   isMultiline: boolean;
 };
 
+export type SelectItemStyle = "checkbox" | "radio" | "dropdown";
+
 export type SelectItem = Item & {
   type: "select";
   label: string;
-  style: "checkbox" | "radio" | "dropdown";
+  style: SelectItemStyle;
   options: string[];
 };

@@ -1,7 +1,8 @@
 
 import { Flex } from "../../../common/Flex";
-import { TemplateItem, TextItem } from "../template";
+import { SelectItem, TemplateItem, TextItem } from "../template";
 import { useTemplateStore } from "../useTemplateStore";
+import { SelectDetails } from "./SelectDetails";
 import { TextDetails } from "./TextDetails";
 type Props = {
   item: TemplateItem;
@@ -14,6 +15,7 @@ export const Details: React.FC<Props> = ({ item }) => {
     <Flex style={{ backgroundColor: "#f7f7f7" }} fullWidth paddingLeft16 paddingRight8 paddingTop16 paddingBottom16>
       <Flex fullWidth paddingRight16>
         {item.type === "text" && <TextDetails item={item as TextItem} />}
+        {item.type === "select" && <SelectDetails item={item as SelectItem} />}
       </Flex>
       <Flex vertical paddingTop8>
         <Flex onClick={() => moveItem(item, -1)}>
