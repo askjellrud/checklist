@@ -38,6 +38,11 @@ export const SelectRenderer: React.FC<Props> = ({ item }) => {
                 updateItem(item);
               }}
             />
+            <i onClick={() => {
+              item.options.splice(index, 1);
+              updateItem(item);
+            }} style={{ fontSize: "18px", WebkitTextStrokeWidth: "0.7px", color: "rgb(255, 75, 75)", cursor: "pointer" }} className="bi bi-x" />
+
           </Flex>
         ))}
 
@@ -46,7 +51,7 @@ export const SelectRenderer: React.FC<Props> = ({ item }) => {
           updateItem(item);
         }}>
           <i style={{ fontSize: "20px", WebkitTextStrokeWidth: "1px", color: "#777", cursor: "pointer" }} className="bi bi-plus" />
-          add option
+          Add
         </Flex>
       </Flex>
     </ItemRenderer>
