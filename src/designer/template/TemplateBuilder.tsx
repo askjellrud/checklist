@@ -1,9 +1,10 @@
 import { Flex } from '../../common/Flex'
 import { useTemplateStore } from './useTemplateStore'
 import { LabelRenderer } from './items/LabelRenderer';
-import { LabelItem, TextItem, TitleItem } from './template';
+import { LabelItem, SelectItem, TextItem, TitleItem } from './template';
 import { TextRenderer } from './items/TextRenderer';
 import { TitleRenderer } from './items/TitleRenderer';
+import { SelectRenderer } from './items/SelectRenderer';
 
 export const TemplateBuilder = () => {
   const { template } = useTemplateStore();
@@ -17,6 +18,8 @@ export const TemplateBuilder = () => {
           <TitleRenderer key={item.id} item={item as TitleItem} />);
         if (item.type === 'text') return (
           <TextRenderer key={item.id} item={item as TextItem} />);
+        if (item.type === 'select') return (
+          <SelectRenderer key={item.id} item={item as SelectItem} />);
         return null;
       })}
 

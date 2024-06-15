@@ -1,10 +1,10 @@
 import { Form } from "react-bootstrap";
-import { LabelItem } from "../template";
+import { LabelItem, TitleItem } from "../template";
 import { ItemRenderer } from "../ItemRenderer";
 import { useTemplateStore } from "../useTemplateStore";
 
 type Props = {
-  item: LabelItem;
+  item: TitleItem;
 };
 
 export const TitleRenderer: React.FC<Props> = ({ item }) => {
