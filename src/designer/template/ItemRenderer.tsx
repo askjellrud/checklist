@@ -20,7 +20,7 @@ export const ItemRenderer: React.FC<Props> = ({ item, children }) => {
   const [showDetails, setShowDetails] = useState<boolean>(false);
 
   return (
-    <Flex alignStart style={{ border: "1px solid #eee", position: 'relative' }} fullWidth>
+    <Flex maxHeight100 alignStart style={{ border: "1px solid #eee", position: 'relative' }} fullWidth>
 
       <Flex style={{
         position: 'absolute',
@@ -41,13 +41,12 @@ export const ItemRenderer: React.FC<Props> = ({ item, children }) => {
         {item.type}
       </Flex>
 
-      <Flex vertical fullWidth>
-        <Flex fullWidth alignStart>
+      <Flex vertical fullHeight fullWidth>
+        <Flex fullWidth fullHeight alignStart>
           <Flex padding16 gap8 fullWidth>
             {children}
           </Flex>
-          <Flex vertical paddingRight8 paddingTop8 paddingBottom4>
-
+          <Flex vertical fullHeight spaceBetween paddingRight8 paddingTop8 paddingBottom4>
             <Dropdown>
               <Dropdown.Toggle as={IconToggle}><i style={{ fontSize: "20px", WebkitTextStrokeWidth: "1px", color: "#777" }} className="bi bi-plus" /></Dropdown.Toggle>
               <Dropdown.Menu>
@@ -77,7 +76,9 @@ export const ItemRenderer: React.FC<Props> = ({ item, children }) => {
             </Dropdown>
 
             {item.type !== 'title' &&
-              <i onClick={() => setShowDetails(!showDetails)} style={{ fontSize: "20px", WebkitTextStrokeWidth: "1px", color: "#777", cursor: "pointer" }} className="bi bi-three-dots" />
+              <Flex>
+                <i onClick={() => setShowDetails(!showDetails)} style={{ fontSize: "20px", WebkitTextStrokeWidth: "1px", color: "#777", cursor: "pointer" }} className="bi bi-three-dots" />
+              </Flex>
             }
           </Flex>
         </Flex>

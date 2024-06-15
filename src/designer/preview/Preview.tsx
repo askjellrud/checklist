@@ -10,7 +10,7 @@ export const Preview = () => {
   const { template } = useTemplateStore();
 
   return (
-    <Flex vertical style={{ borderLeft: "1px solid #ccc" }} padding32 fullWidth fullHeight>
+    <Flex vertical style={{ borderLeft: "1px solid #ccc", overflow: "auto" }} padding32 fullWidth fullHeight>
 
       {template.items.map((item) => {
         if (item.type === 'label') return (

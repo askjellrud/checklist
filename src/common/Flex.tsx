@@ -71,6 +71,7 @@ export type FlexProps = {
   wrap?: boolean;
   wrapReverse?: boolean;
   maxWidth100?: boolean;
+  maxHeight100?: boolean;
   minWidth0?: boolean;
   minHeight0?: boolean;
   children?: ReactNode;
@@ -141,6 +142,7 @@ export const Flex = React.forwardRef<HTMLDivElement, FlexProps>(({
   basis0 = false,
   shrink0 = false,
   maxWidth100 = false,
+  maxHeight100 = false,
   minWidth0 = false,
   minHeight0 = false,
   grayBackground = false,
@@ -156,8 +158,8 @@ export const Flex = React.forwardRef<HTMLDivElement, FlexProps>(({
     inline && styles.inlineFlex,
     direction,
     (!!onClick || pointer) && styles['cursor-pointer'],
-    spaceBetween && styles.spaceBetween,
-    spaceAround && styles.spaceAround,
+    spaceBetween && styles['space-between'],
+    spaceAround && styles['space-around'],
     center && styles.center,
     marginLeftAuto && styles.marginLeftAuto,
     rightAlign && styles['right-align'],
@@ -179,7 +181,8 @@ export const Flex = React.forwardRef<HTMLDivElement, FlexProps>(({
     fullWidth && styles['full-width'],
     minWidth0 && styles.minWidth0,
     minHeight0 && styles.minHeight0,
-    maxWidth100 && styles.maxWidth100,
+    maxWidth100 && styles['max-width-100'],
+    maxHeight100 && styles['max-height-100'],
     fullHeight && styles['full-height'],
     grow1 && styles.grow1,
     basis0 && styles.basis0,
