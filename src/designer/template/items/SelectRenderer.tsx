@@ -30,27 +30,33 @@ export const SelectRenderer: React.FC<Props> = ({ item }) => {
           <Flex gap8 key={index}>
             -
             <Form.Control
+              value={option}
               type="text"
               placeholder=""
-              value={option}
               onChange={(event) => {
                 item.options[index] = event.target.value;
                 updateItem(item);
               }}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter') {
+                  item.options.push("");
+                  updateItem(item);
+                }
+              }}
             />
-            <i onClick={() => {
+            <i className="bi bi-x" onClick={() => {
               item.options.splice(index, 1);
               updateItem(item);
-            }} style={{ fontSize: "18px", WebkitTextStrokeWidth: "0.7px", color: "rgb(255, 75, 75)", cursor: "pointer" }} className="bi bi-x" />
+            }} style={{ fontSize: "18px", WebkitTextStrokeWidth: "0.7px", color: "rgb(255, 75, 75)", cursor: "pointer" }} />
 
           </Flex>
         ))}
 
-        <Flex onClick={() => {
+        <Flex className="bi bi-plus" onClick={() => {
           item.options.push("");
           updateItem(item);
         }}>
-          <i style={{ fontSize: "20px", WebkitTextStrokeWidth: "1px", color: "#777", cursor: "pointer" }} className="bi bi-plus" />
+          <i style={{ fontSize: "20px", WebkitTextStrokeWidth: "1px", color: "#777", cursor: "pointer" }} />
           Add
         </Flex>
       </Flex>
