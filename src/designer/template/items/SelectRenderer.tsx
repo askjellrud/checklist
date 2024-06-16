@@ -42,7 +42,7 @@ export const SelectRenderer: React.FC<Props> = ({ item }) => {
               }}
               onKeyDown={(event) => {
                 if (event.key === 'Enter') {
-                  item.options.push("");
+                  item.options.splice(index + 1, 0, "");
                   updateItem(item);
 
                   setTimeout(() => {
