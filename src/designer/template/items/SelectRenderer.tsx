@@ -3,6 +3,7 @@ import { SelectItem } from "../template";
 import { ItemRenderer } from "../ItemRenderer";
 import { useTemplateStore } from "../useTemplateStore";
 import { Flex } from "../../../common/Flex";
+import { useRef } from "react";
 
 type Props = {
   item: SelectItem;
@@ -10,6 +11,7 @@ type Props = {
 
 export const SelectRenderer: React.FC<Props> = ({ item }) => {
   const { updateItem } = useTemplateStore();
+  const inputRefs = useRef<(HTMLInputElement)[]>([]);
 
   return (
     <ItemRenderer item={item}>
@@ -30,6 +32,7 @@ export const SelectRenderer: React.FC<Props> = ({ item }) => {
           <Flex gap8 key={index}>
             -
             <Form.Control
+              ref={(el: HTMLInputElement) => (inputRefs.current[index] = el)}
               value={option}
               type="text"
               placeholder=""
@@ -41,6 +44,12 @@ export const SelectRenderer: React.FC<Props> = ({ item }) => {
                 if (event.key === 'Enter') {
                   item.options.push("");
                   updateItem(item);
+
+                  setTimeout(() => {
+                    if (inputRefs.current[index + 1]) {
+                      inputRefs.current[index + 1].focus();
+                    }
+                  }, 0);
                 }
               }}
             />
@@ -52,13 +61,16 @@ export const SelectRenderer: React.FC<Props> = ({ item }) => {
           </Flex>
         ))}
 
-        <Flex className="bi bi-plus" onClick={() => {
-          item.options.push("");
-          updateItem(item);
-        }}>
-          <i style={{ fontSize: "20px", WebkitTextStrokeWidth: "1px", color: "#777", cursor: "pointer" }} />
-          Add
-        </Flex>
+        {item.options.length < 1 &&
+          <Flex className="bi bi-plus" onClick={() => {
+            item.options.push("");
+            updateItem(item);
+          }}>
+            <i style={{ fontSize: "20px", WebkitTextStrokeWidth: "1px", color: "#777", cursor: "pointer" }} />
+            Add option
+          </Flex>
+        }
+
       </Flex>
     </ItemRenderer>
   )
