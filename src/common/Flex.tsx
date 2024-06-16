@@ -20,6 +20,7 @@ export type FlexProps = {
   inline?: boolean;
   fullWidth?: boolean;
   fullHeight?: boolean;
+  halfWidth?: boolean;
   grow1?: boolean;
   basis0?: boolean;
   shrink0?: boolean;
@@ -138,6 +139,7 @@ export const Flex = React.forwardRef<HTMLDivElement, FlexProps>(({
   wrapReverse = false,
   fullWidth = false,
   fullHeight = false,
+  halfWidth = false,
   grow1 = false,
   basis0 = false,
   shrink0 = false,
@@ -179,6 +181,7 @@ export const Flex = React.forwardRef<HTMLDivElement, FlexProps>(({
     wrap && styles.wrap,
     wrapReverse && styles.wrapReverse,
     fullWidth && styles['full-width'],
+    halfWidth && styles['half-width'],
     minWidth0 && styles.minWidth0,
     minHeight0 && styles.minHeight0,
     maxWidth100 && styles['max-width-100'],

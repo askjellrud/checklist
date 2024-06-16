@@ -10,8 +10,7 @@ export const Preview = () => {
   const { template } = useTemplateStore();
 
   return (
-    <Flex vertical style={{ borderLeft: "1px solid #ccc", overflow: "auto" }} padding32 fullWidth fullHeight>
-
+    <>
       {template.items.map((item) => {
         if (item.type === 'label') return (
           <LabelRenderer key={item.id} item={item as LabelItem} />);
@@ -23,7 +22,7 @@ export const Preview = () => {
           <SelectRenderer key={item.id} item={item as SelectItem} />);
         return null;
       })}
+    </>
 
-    </Flex>
   )
 }

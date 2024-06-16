@@ -19,6 +19,7 @@ interface CssExports {
   flex: string;
   "full-height": string;
   "full-width": string;
+  "half-width": string;
   fullHeight: string;
   fullWidth: string;
   "gap-16": string;
