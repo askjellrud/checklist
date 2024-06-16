@@ -1,4 +1,3 @@
-import { Flex } from '../../common/Flex'
 import { useTemplateStore } from './useTemplateStore'
 import { LabelRenderer } from './items/LabelRenderer';
 import { LabelItem, SelectItem, TextItem, TitleItem } from './template';
