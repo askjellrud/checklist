@@ -1,5 +1,6 @@
-import { LabelItem, SelectItem, TextItem, TitleItem } from '../template/template';
+import { DividerItem, LabelItem, SelectItem, TextItem, TitleItem } from '../template/template';
 import { useTemplateStore } from '../template/useTemplateStore';
+import { DividerRenderer } from './items/DividerRenderer';
 import { LabelRenderer } from './items/LabelRenderer';
 import { SelectRenderer } from './items/SelectRenderer';
 import { TextRenderer } from './items/TextRenderer';
@@ -19,6 +20,8 @@ export const Preview = () => {
           <TextRenderer key={item.id} item={item as TextItem} />);
         if (item.type === 'select') return (
           <SelectRenderer key={item.id} item={item as SelectItem} />);
+        if (item.type === 'divider') return (
+          <DividerRenderer key={item.id} item={item as DividerItem} />);
         return null;
       })}
     </>

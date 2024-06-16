@@ -1,9 +1,10 @@
 import { useTemplateStore } from './useTemplateStore'
 import { LabelRenderer } from './items/LabelRenderer';
-import { LabelItem, SelectItem, TextItem, TitleItem } from './template';
+import { DividerItem, LabelItem, SelectItem, TextItem, TitleItem } from './template';
 import { TextRenderer } from './items/TextRenderer';
 import { TitleRenderer } from './items/TitleRenderer';
 import { SelectRenderer } from './items/SelectRenderer';
+import { DividerRenderer } from './items/DividerRenderer';
 
 export const TemplateBuilder = () => {
   const { template } = useTemplateStore();
@@ -19,6 +20,8 @@ export const TemplateBuilder = () => {
           <TextRenderer key={item.id} item={item as TextItem} />);
         if (item.type === 'select') return (
           <SelectRenderer key={item.id} item={item as SelectItem} />);
+        if (item.type === 'divider') return (
+          <DividerRenderer key={item.id} item={item as DividerItem} />);
         return null;
       })}
 

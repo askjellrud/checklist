@@ -4,7 +4,12 @@ export type Template = {
   items: TemplateItem[];
 };
 
-export type TemplateItem = LabelItem | TextItem | TitleItem | SelectItem;
+export type TemplateItem =
+  | LabelItem
+  | TextItem
+  | TitleItem
+  | SelectItem
+  | DividerItem;
 
 type Item = {
   id: string;
@@ -17,6 +22,11 @@ export type TitleItem = Item & {
 
 export type LabelItem = Item & {
   type: "label";
+  label: string;
+};
+
+export type DividerItem = Item & {
+  type: "divider";
   label: string;
 };
 

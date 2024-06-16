@@ -60,6 +60,9 @@ export const ItemRenderer: React.FC<Props> = ({ item, children }) => {
                 <Dropdown.Item onClick={() => addItemAfter(item, { id: randomId(), type: 'select', label: "", options: [""], style: 'checkbox' })}>
                   <i style={{ color: "#28A745", WebkitTextStrokeWidth: "2px" }} className="bi bi-plus" />&nbsp;Select
                 </Dropdown.Item>
+                <Dropdown.Item onClick={() => addItemAfter(item, { id: randomId(), type: 'divider', label: "" })}>
+                  <i style={{ color: "#28A745", WebkitTextStrokeWidth: "2px" }} className="bi bi-plus" />&nbsp;Divider
+                </Dropdown.Item>
 
                 {item.type !== 'title' &&
                   <>
