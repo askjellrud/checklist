@@ -15,7 +15,7 @@ type Store = {
 const newTemplate = (): Template => {
   return {
     id: randomId(),
-    title: "",
+    name: "",
     items: [
       {
         id: randomId(),

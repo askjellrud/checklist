@@ -5,9 +5,13 @@ import { TextRenderer } from './items/TextRenderer';
 import { TitleRenderer } from './items/TitleRenderer';
 import { SelectRenderer } from './items/SelectRenderer';
 import { DividerRenderer } from './items/DividerRenderer';
+import { Button } from 'react-bootstrap';
+import styles from '../../App.module.scss';
+import { useCreateTemplate } from '../../api/use-create-template';
 
 export const TemplateBuilder = () => {
   const { template } = useTemplateStore();
+  const createTemplate = useCreateTemplate();
 
   return (
     <>
@@ -24,7 +28,9 @@ export const TemplateBuilder = () => {
           <DividerRenderer key={item.id} item={item as DividerItem} />);
         return null;
       })}
-
+      <Button className={styles['app-btn']} onClick={() => {
+        createTemplate.mutate(template);
+      }}>Save</Button>
     </>
   )
 }

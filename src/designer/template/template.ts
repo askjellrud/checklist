@@ -1,6 +1,6 @@
 export type Template = {
   id: string;
-  title: string;
+  name: string;
   items: TemplateItem[];
 };
 

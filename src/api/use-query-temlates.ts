@@ -3,15 +3,12 @@ import { AxiosResponse, CancelTokenSource } from "axios";
 import { GET } from "./axios";
 import { queryKeysTemplates } from "./query-keys";
 import { apiBaseUrl } from "./urls";
+import { Template } from "../designer/template/template";
 
-export type Template = {
-  name: string;
-};
-
-const url = () => apiBaseUrl + "/checklist/templates";
+const url = apiBaseUrl + "/checklist/templates";
 const axios = (
   cancelToken?: CancelTokenSource
-): Promise<AxiosResponse<Template[]>> => GET(url(), undefined, { cancelToken });
+): Promise<AxiosResponse<Template[]>> => GET(url, undefined, { cancelToken });
 
 export const useQueryTemplates = (): UseQueryResult<Template[]> =>
   useQuery<Template[]>({
