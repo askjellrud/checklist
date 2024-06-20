@@ -9,7 +9,7 @@ export const App = () => {
   return (
     <Flex vertical fullWidth fullHeight>
 
-      <Flex center style={{ height: "64px", color: "white", fontSize: "24px", fontWeight: "600", backgroundColor: "#007BFF", position: "relative" }} fullWidth>
+      <Flex center style={{ height: "64px", color: "white", fontSize: "24px", fontWeight: "600", backgroundColor: "#00A859", position: "relative" }} fullWidth>
         {section == 'templates' && "Checklist Templates"}
         {section == 'designer' && "Checklist Builder"}
 
