@@ -1,11 +1,11 @@
 import { Designer } from './designer/Designer'
 import { Flex } from './common/Flex'
-import './App.css'
-import { useState } from 'react'
 import { Templates } from './templates/Templates'
+import { useAppStore } from './useAppStore'
 
 export const App = () => {
-  const [section, setSection] = useState<'templates' | 'designer'>('templates');
+  const { section } = useAppStore();
+
   return (
     <Flex vertical fullWidth fullHeight>
 
@@ -15,7 +15,6 @@ export const App = () => {
 
         <Flex style={{ position: "absolute", right: "12px" }} >
           <i className="bi bi-list" onClick={() => {
-            setSection(section === 'designer' ? "templates" : 'designer');
           }} style={{ fontSize: "26px", WebkitTextStrokeWidth: "0.7px", color: "white", cursor: "pointer" }} />
         </Flex>
       </Flex>

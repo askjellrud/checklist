@@ -1,4 +1,4 @@
-import create from "zustand";
+import { create } from "zustand";
 import { Template, TemplateItem } from "./template";
 import { randomId } from "../../common/string";
 
@@ -6,14 +6,15 @@ type Store = {
   template: Template;
   setTitle: (title: string) => void;
   updateItem: (item: TemplateItem) => void;
+  resetTemplate: () => void;
   removeItem: (item: TemplateItem) => void;
   moveItem: (item: TemplateItem, direction: number) => void;
   addItemAfter: (item: TemplateItem, newItem: TemplateItem) => void;
 };
 
-export const useTemplateStore = create<Store>((set) => ({
-  template: {
-    id: "",
+const newTemplate = (): Template => {
+  return {
+    id: randomId(),
     title: "",
     items: [
       {
@@ -22,7 +23,15 @@ export const useTemplateStore = create<Store>((set) => ({
         label: "",
       },
     ],
-  },
+  };
+};
+
+export const useTemplateStore = create<Store>((set) => ({
+  template: newTemplate(),
+  resetTemplate: () =>
+    set((state) => {
+      return { ...state, template: newTemplate() };
+    }),
   setTitle: (title: string) =>
     set((state) => {
       return { ...state, template: { ...state.template, title } };
