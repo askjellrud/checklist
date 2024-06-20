@@ -7,6 +7,7 @@ type Store = {
   setName: (name: string) => void;
   updateItem: (item: TemplateItem) => void;
   resetTemplate: () => void;
+  setTemplate: (template: Template) => void;
   removeItem: (item: TemplateItem) => void;
   moveItem: (item: TemplateItem, direction: number) => void;
   addItemAfter: (item: TemplateItem, newItem: TemplateItem) => void;
@@ -31,6 +32,10 @@ export const useTemplateStore = create<Store>((set) => ({
   resetTemplate: () =>
     set((state) => {
       return { ...state, template: newTemplate() };
+    }),
+  setTemplate: (template: Template) =>
+    set((state) => {
+      return { ...state, template };
     }),
   setName: (name: string) =>
     set((state) => {

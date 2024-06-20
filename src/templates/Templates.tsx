@@ -4,11 +4,12 @@ import { Flex } from '../common/Flex'
 import styles from '../App.module.scss'
 import { useAppStore } from '../useAppStore';
 import { useTemplateStore } from '../designer/template/useTemplateStore';
+import { cloneDeep } from 'lodash';
 
 export const Templates = () => {
   const templates = useQueryTemplates();
   const { setSection } = useAppStore();
-  const { resetTemplate } = useTemplateStore();
+  const { resetTemplate, setTemplate } = useTemplateStore();
 
   if (!templates.data) {
     return null;
@@ -21,7 +22,12 @@ export const Templates = () => {
           <Flex center fullWidth padding8>
             {template.name}
           </Flex>
-          <Flex>...</Flex>
+          <i className="bi bi-pencil" onClick={() => {
+            console.log(template);
+            setTemplate(cloneDeep(template));
+            setSection('designer');
+          }} style={{ fontSize: "18px", WebkitTextStrokeWidth: "0.7px", color: "rgb(255, 75, 75)", cursor: "pointer" }} />
+
         </Flex>
       ))}
       <Flex fullWidth center>
