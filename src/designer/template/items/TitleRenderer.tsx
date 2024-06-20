@@ -5,10 +5,11 @@ import { useTemplateStore } from "../useTemplateStore";
 
 type Props = {
   item: TitleItem;
+  isMain: boolean;
 };
 
-export const TitleRenderer: React.FC<Props> = ({ item }) => {
-  const { updateItem } = useTemplateStore();
+export const TitleRenderer: React.FC<Props> = ({ item, isMain }) => {
+  const { updateItem, setName } = useTemplateStore();
 
   return (
     <ItemRenderer item={item}>
@@ -19,6 +20,9 @@ export const TitleRenderer: React.FC<Props> = ({ item }) => {
         onChange={(event) => {
           item.label = event.target.value;
           updateItem(item);
+          if (isMain) {
+            setName(item.label);
+          }
         }}
       />
     </ItemRenderer>

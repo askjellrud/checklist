@@ -15,11 +15,11 @@ export const TemplateBuilder = () => {
 
   return (
     <>
-      {template.items.map((item) => {
+      {template.items.map((item, index) => {
         if (item.type === 'label') return (
           <LabelRenderer key={item.id} item={item as LabelItem} />);
         if (item.type === 'title') return (
-          <TitleRenderer key={item.id} item={item as TitleItem} />);
+          <TitleRenderer key={item.id} item={item as TitleItem} isMain={index === 0} />);
         if (item.type === 'text') return (
           <TextRenderer key={item.id} item={item as TextItem} />);
         if (item.type === 'select') return (
@@ -29,6 +29,7 @@ export const TemplateBuilder = () => {
         return null;
       })}
       <Button className={styles['app-btn']} onClick={() => {
+
         createTemplate.mutate(template);
       }}>Save</Button>
     </>

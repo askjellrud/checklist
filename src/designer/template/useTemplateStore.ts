@@ -4,7 +4,7 @@ import { randomId } from "../../common/string";
 
 type Store = {
   template: Template;
-  setTitle: (title: string) => void;
+  setName: (name: string) => void;
   updateItem: (item: TemplateItem) => void;
   resetTemplate: () => void;
   removeItem: (item: TemplateItem) => void;
@@ -32,9 +32,9 @@ export const useTemplateStore = create<Store>((set) => ({
     set((state) => {
       return { ...state, template: newTemplate() };
     }),
-  setTitle: (title: string) =>
+  setName: (name: string) =>
     set((state) => {
-      return { ...state, template: { ...state.template, title } };
+      return { ...state, template: { ...state.template, name } };
     }),
   removeItem: (item: TemplateItem) =>
     set((state) => {
