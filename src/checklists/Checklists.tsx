@@ -19,7 +19,7 @@ export const Checklists = () => {
   return (
     <Flex style={{ paddingTop: "20px" }} fullWidth vertical paddingLeft16 paddingRight16 gap16>
       {templates.data.map((template, index) => (
-        <Flex key={index} style={{ border: "1px solid #bbb", color: template.status === 'published' ? "#333" : colors.muted }} fullWidth paddingRight16 paddingLeft16 spaceBetween>
+        <Flex key={index} style={{ border: "1px solid #bbb", color: template.status === 'published' ? "#333" : colors.muted }} fullWidth spaceBetween>
           <Checklist template={template} />
         </Flex>
       ))}
