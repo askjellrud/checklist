@@ -17,7 +17,7 @@ export const DividerRenderer: React.FC<Props> = ({ item }) => {
                         left: 0,
                         top: 0,
                         marginTop: '-5px',
-                        marginLeft: '18px',
+                        marginLeft: '12px',
                         marginRight: '18px',
                         fontSize: "18px",
                         color: "#555",

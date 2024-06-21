@@ -5,6 +5,7 @@ import styles from '../App.module.scss'
 import { useAppStore } from '../useAppStore';
 import { useTemplateStore } from '../designer/template/useTemplateStore';
 import { cloneDeep } from 'lodash';
+import { colors } from '../common/colors';
 
 export const Templates = () => {
   const templates = useQueryTemplates();
@@ -26,7 +27,7 @@ export const Templates = () => {
             console.log(template);
             setTemplate(cloneDeep(template));
             setSection('designer');
-          }} style={{ fontSize: "18px", WebkitTextStrokeWidth: "0.7px", color: "rgb(255, 75, 75)", cursor: "pointer" }} />
+          }} style={{ fontSize: "18px", WebkitTextStrokeWidth: "0.7px", color: colors.themeDarker, cursor: "pointer" }} />
 
         </Flex>
       ))}

@@ -4,6 +4,13 @@ export type Template = {
   items: TemplateItem[];
 };
 
+export type DummyToSeeAllFields =
+  | keyof LabelItem
+  | keyof TextItem
+  | keyof TitleItem
+  | keyof SelectItem
+  | keyof DividerItem;
+
 export type TemplateItem =
   | LabelItem
   | TextItem
