@@ -7,7 +7,7 @@ import { useTemplateStore } from '../builder/template/useTemplateStore';
 import { cloneDeep } from 'lodash';
 import { colors } from '../common/colors';
 
-export const Templates = () => {
+export const Checklists = () => {
   const templates = useQueryTemplates();
   const { setSection } = useAppStore();
   const { resetTemplate, setTemplate } = useTemplateStore();
@@ -35,7 +35,7 @@ export const Templates = () => {
         <Button className={styles['app-btn']} onClick={() => {
           resetTemplate();
           setSection('builder');
-        }} >Create a new template</Button>
+        }} >Create a new checklist</Button>
       </Flex>
     </Flex >
   )
