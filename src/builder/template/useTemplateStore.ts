@@ -25,6 +25,10 @@ const newTemplate = (): Template => {
         label: "",
       },
     ],
+    createdAt: Date.now(),
+    createdBy: "unknown",
+    updatedAt: Date.now(),
+    updatedBy: "unknown",
   };
 };
 

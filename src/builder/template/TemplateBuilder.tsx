@@ -52,7 +52,10 @@ export const TemplateBuilder = () => {
 
       <Flex fullWidth gap16>
         <Button className={styles['app-btn']} onClick={() => {
-          createTemplate.mutate(template, {
+          const toSave = cloneDeep(template);
+          toSave.updatedAt = Date.now();
+          // TODO updatedy when we got that
+          createTemplate.mutate(toSave, {
             onSuccess: () => {
               queryClient.invalidateQueries({ queryKey: queryKeysTemplates.list() });
               setShowSaveResult(true);
@@ -64,6 +67,8 @@ export const TemplateBuilder = () => {
           text='Are you sure you want to publish? No further changes can be done'
           buttonProps={{ className: styles['app-btn'] }} onConfirm={() => {
             const toPublish = cloneDeep(template);
+            toPublish.updatedAt = Date.now();
+            // TODO updatedBy when we have that
             toPublish.status = 'published';
             createTemplate.mutate(toPublish, {
               onSuccess: () => setSection('checklists')

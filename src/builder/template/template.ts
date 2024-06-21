@@ -3,6 +3,11 @@ export type Template = {
   name: string;
   status: "draft" | "published";
   items: TemplateItem[];
+
+  createdAt: number;
+  createdBy: string;
+  updatedAt: number;
+  updatedBy: string;
 };
 
 export type DummyToSeeAllFields =
