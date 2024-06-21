@@ -16,19 +16,21 @@ export const App = () => {
         {section == 'checklists' && "Checklists"}
         {section == 'builder' && "Checklist Builder"}
 
-        <Flex style={{ position: "absolute", right: "12px" }} >
+        {section !== 'checklists' &&
+          <Flex style={{ position: "absolute", right: "12px" }} >
 
-          <Dropdown>
-            <Dropdown.Toggle as={IconToggle}><i style={{ fontSize: "26px", WebkitTextStrokeWidth: "0.7px", color: "white" }} className="bi bi-list" /></Dropdown.Toggle>
-            <Dropdown.Menu>
+            <Dropdown>
+              <Dropdown.Toggle as={IconToggle}><i style={{ fontSize: "26px", WebkitTextStrokeWidth: "0.7px", color: "white" }} className="bi bi-list" /></Dropdown.Toggle>
+              <Dropdown.Menu>
 
-              <Dropdown.Item onClick={() => setSection('checklists')}>
-                Checklists
-              </Dropdown.Item>
+                <Dropdown.Item onClick={() => setSection('checklists')}>
+                  Checklists
+                </Dropdown.Item>
 
-            </Dropdown.Menu>
-          </Dropdown>
-        </Flex>
+              </Dropdown.Menu>
+            </Dropdown>
+          </Flex>
+        }
       </Flex>
 
       <Flex style={{ height: "calc(100% - 64px)" }} fullWidth alignStart>

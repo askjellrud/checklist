@@ -1,6 +1,7 @@
 export type Template = {
   id: string;
   name: string;
+  status: "draft" | "published";
   items: TemplateItem[];
 };
 

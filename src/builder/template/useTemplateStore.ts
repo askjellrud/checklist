@@ -17,6 +17,7 @@ const newTemplate = (): Template => {
   return {
     id: randomId(),
     name: "",
+    status: "draft",
     items: [
       {
         id: randomId(),

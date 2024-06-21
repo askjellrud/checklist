@@ -34,7 +34,7 @@ export const TemplateBuilder = () => {
           <DividerRenderer key={item.id} item={item as DividerItem} />);
         return null;
       })}
-      {createTemplate.isSuccess &&
+      {createTemplate.isSuccess && showSaveResult &&
         <Alert variant='light' onClose={() => setShowSaveResult(false)} dismissible>
 
           <Flex>The checklist is saved. If you are done you can go to the&nbsp;
