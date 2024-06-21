@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { apiBaseUrl, apiHeader } from "./urls";
-import { Template } from "../designer/template/template";
+import { Template } from "../builder/template/template";
 
 const url = `${apiBaseUrl}/checklist/templates`;
 

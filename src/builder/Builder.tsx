@@ -2,7 +2,7 @@ import { Flex } from '../common/Flex'
 import { TemplateBuilder } from './template/TemplateBuilder'
 import { Preview } from './preview/Preview'
 
-export const Designer = () => {
+export const Builder = () => {
 
   return (
     <>

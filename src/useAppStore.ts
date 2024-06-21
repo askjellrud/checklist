@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-type Section = "designer" | "templates";
+type Section = "builder" | "templates";
 
 type Store = {
   section: Section;

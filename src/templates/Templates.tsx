@@ -3,7 +3,7 @@ import { useQueryTemplates } from '../api/use-query-temlates'
 import { Flex } from '../common/Flex'
 import styles from '../App.module.scss'
 import { useAppStore } from '../useAppStore';
-import { useTemplateStore } from '../designer/template/useTemplateStore';
+import { useTemplateStore } from '../builder/template/useTemplateStore';
 import { cloneDeep } from 'lodash';
 import { colors } from '../common/colors';
 
@@ -26,7 +26,7 @@ export const Templates = () => {
           <i className="bi bi-pencil" onClick={() => {
             console.log(template);
             setTemplate(cloneDeep(template));
-            setSection('designer');
+            setSection('builder');
           }} style={{ fontSize: "18px", WebkitTextStrokeWidth: "0.7px", color: colors.themeDarker, cursor: "pointer" }} />
 
         </Flex>
@@ -34,7 +34,7 @@ export const Templates = () => {
       <Flex fullWidth center>
         <Button className={styles['app-btn']} onClick={() => {
           resetTemplate();
-          setSection('designer');
+          setSection('builder');
         }} >Create a new template</Button>
       </Flex>
     </Flex >

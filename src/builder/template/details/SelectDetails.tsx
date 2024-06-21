@@ -1,4 +1,4 @@
-import { SelectItem, SelectItemStyle } from "../../template/template";
+import { SelectItem, SelectItemStyle } from "../template";
 import { Form } from "react-bootstrap";
 import { Flex } from "../../../common/Flex";
 import { useTemplateStore } from "../useTemplateStore";

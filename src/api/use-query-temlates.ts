@@ -3,7 +3,7 @@ import { AxiosResponse, CancelTokenSource } from "axios";
 import { GET } from "./axios";
 import { queryKeysTemplates } from "./query-keys";
 import { apiBaseUrl } from "./urls";
-import { Template } from "../designer/template/template";
+import { Template } from "../builder/template/template";
 
 const url = apiBaseUrl + "/checklist/templates";
 const axios = (

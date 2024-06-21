@@ -1,4 +1,4 @@
-import { Designer } from './designer/Designer'
+import { Builder } from './builder/Builder'
 import { Flex } from './common/Flex'
 import { Templates } from './templates/Templates'
 import { useAppStore } from './useAppStore'
@@ -14,7 +14,7 @@ export const App = () => {
 
       <Flex center style={{ height: "64px", color: "white", fontSize: "24px", fontWeight: "600", backgroundColor: colors.theme, position: "relative" }} fullWidth>
         {section == 'templates' && "Checklist Templates"}
-        {section == 'designer' && "Checklist Builder"}
+        {section == 'builder' && "Checklist Builder"}
 
         <Flex style={{ position: "absolute", right: "12px" }} >
 
@@ -27,7 +27,7 @@ export const App = () => {
               <Dropdown.Item onClick={() => setSection('templates')}>
                 Templates
               </Dropdown.Item>
-              <Dropdown.Item onClick={() => setSection('designer')}>
+              <Dropdown.Item onClick={() => setSection('builder')}>
                 Designer
               </Dropdown.Item>
 
@@ -38,7 +38,7 @@ export const App = () => {
 
       <Flex style={{ height: "calc(100% - 64px)" }} fullWidth alignStart>
         {section === "templates" && <Templates />}
-        {section === "designer" && <Designer />}
+        {section === "builder" && <Builder />}
       </Flex>
     </Flex>
   )
