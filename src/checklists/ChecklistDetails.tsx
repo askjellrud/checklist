@@ -1,3 +1,4 @@
+import { Col, Container, Row } from 'react-bootstrap';
 import { Template } from '../builder/template/template';
 import { Flex } from '../common/Flex';
 import { NewCheck } from './NewCheck';
@@ -10,9 +11,22 @@ export const ChecklistDetails: React.FC<Props> = ({ template }) => {
 
   return (
     <Flex fullWidth vertical gap8 padding16 style={{ borderTop: "1px dotted #ccc" }}>
-      <NewCheck onCreated={() => {
-        // TODO
-      }} />
-      {new Date(template.updatedAt).toLocaleString()}
+
+
+      <Container>
+        <Row>
+          <Col>Test</Col>
+          <Col>Test</Col>
+          <Col>Test</Col>
+        </Row>
+        <Row>
+          <Col>Test</Col>
+          <Col>Test</Col>
+          <Col>Test</Col>
+        </Row>
+      </Container>
+
+      <NewCheck checklistId={template.id} />
+
     </Flex>)
 }

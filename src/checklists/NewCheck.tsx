@@ -2,27 +2,44 @@ import React, { useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 import styles from '../App.module.scss'
 import { Flex } from '../common/Flex';
+import { randomId } from '../common/string';
+import { colors } from '../common/colors';
 
-interface ConfirmButtonProps {
-    onCreated: () => void;
+export type Check = {
+    id: string;
+    checklistId: string;
+    area: string;
+    responsible: string;
 }
 
-export const NewCheck: React.FC<ConfirmButtonProps> = ({ onCreated }) => {
+interface ConfirmButtonProps {
+    checklistId: string;
+}
+
+export const NewCheck: React.FC<ConfirmButtonProps> = ({ checklistId }) => {
     const [showModal, setShowModal] = useState(false);
     const [area, setArea] = useState('');
     const [responsible, setResponsible] = useState('');
 
 
-    const handleConfirm = () => {
-        setShowModal(false); // Close the modal after confirming
-        onCreated();
+    const onCreate = () => {
+        const check: Check = {
+            id: randomId(),
+            checklistId,
+            area,
+            responsible
+        }
+        console.log('Create check...', check);
+        setShowModal(false);
     };
 
     return (
         <>
-            <Button className={styles['app-btn']} onClick={() => setShowModal(true)}>
-                New check
-            </Button>
+            <Flex horizontalReverse style={{ color: colors.themeDarker, fontSize: "16px" }} fullWidth onClick={() => setShowModal(true)}>
+                new check
+                <i className="bi bi-plus" style={{ fontSize: "18px", WebkitTextStrokeWidth: "1px", color: colors.themeDarker, cursor: "pointer" }} />
+            </Flex>
+
 
             <Modal show={showModal} onHide={() => setShowModal(false)}>
                 <Modal.Header closeButton>
@@ -50,8 +67,8 @@ export const NewCheck: React.FC<ConfirmButtonProps> = ({ onCreated }) => {
                         <Form.Control
                             type="text"
                             placeholder=""
-                            value={area}
-                            onChange={(event) => setArea(event.target.value)}
+                            value={responsible}
+                            onChange={(event) => setResponsible(event.target.value)}
                         />
 
                     </Flex>
@@ -61,7 +78,7 @@ export const NewCheck: React.FC<ConfirmButtonProps> = ({ onCreated }) => {
                     <Button variant="secondary" onClick={() => setShowModal(false)}>
                         Cancel
                     </Button>
-                    <Button className={styles['app-btn']} onClick={handleConfirm}>
+                    <Button className={styles['app-btn']} onClick={() => onCreate()}>
                         Create
                     </Button>
                 </Modal.Footer>

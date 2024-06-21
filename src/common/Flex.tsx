@@ -154,7 +154,7 @@ export const Flex = React.forwardRef<HTMLDivElement, FlexProps>(({
   ...restProps }, ref) => {
   let direction = styles.horizontal; // We should call it row and column as in css
   direction = vertical ? styles.vertical : direction;
-  direction = horizontalReverse ? styles.horizontalReverse : direction;
+  direction = horizontalReverse ? styles['horizontal-reverse'] : direction;
 
   const allClassNames = classNames(
     className,
