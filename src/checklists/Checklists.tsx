@@ -33,43 +33,21 @@ export const Checklists = () => {
             {template.name}
           </Flex>
 
-          <Dropdown>
-            <Dropdown.Toggle as={IconToggle}><i className="bi bi-list" style={{ fontSize: "26px", WebkitTextStrokeWidth: "0.7px" }} /></Dropdown.Toggle>
-            <Dropdown.Menu>
+          {template.status === "draft" &&
+            <>
+              <i className="bi bi-pencil" onClick={() => {
+                setTemplate(cloneDeep(template));
+                setSection('builder');
+              }} style={{ fontSize: "20px", WebkitTextStrokeWidth: "0.7px", color: colors.themeDarker, marginRight: "10px", cursor: "pointer" }} />
 
-              {template.status === "draft" &&
-                <>
-                  <Dropdown.Item onClick={() => {
-                    setTemplate(cloneDeep(template));
-                    setSection('builder');
-                  }}>
-                    <i className="bi bi-pencil" style={{ fontSize: "16px", WebkitTextStrokeWidth: "0.7px", color: colors.themeDarker, marginRight: "10px", cursor: "pointer" }} />
-                    Edit draft
-                  </Dropdown.Item>
+            </>
+          }
 
-                  <Dropdown.Item onClick={() => {
-                    const toPublish = cloneDeep(template);
-                    toPublish.status = 'published';
-                    createTemplate.mutate(toPublish);
-
-                  }}>
-                    <i className="bi bi-upload" style={{ fontSize: "16px", WebkitTextStrokeWidth: "0.7px", color: colors.themeDarker, marginRight: "10px", cursor: "pointer" }} />
-                    Publish draft
-                  </Dropdown.Item>
-                </>
-              }
-
-              {template.status === "published" &&
-                <Dropdown.Item onClick={() => {
-                  // TODO
-                }}>
-                  <i className="bi bi-upload" style={{ fontSize: "16px", WebkitTextStrokeWidth: "0.7px", color: colors.themeDarker, marginRight: "10px", cursor: "pointer" }} />
-                  Todo
-                </Dropdown.Item>
-              }
-
-            </Dropdown.Menu>
-          </Dropdown>
+          {template.status === "published" &&
+            <i className="bi bi-three-dots" onClick={() => {
+              // TODO 
+            }} style={{ fontSize: "16px", WebkitTextStrokeWidth: "0.7px", color: colors.themeDarker, marginRight: "10px", cursor: "pointer" }} />
+          }
 
         </Flex>
       ))}

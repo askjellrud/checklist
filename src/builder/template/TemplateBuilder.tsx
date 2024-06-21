@@ -12,10 +12,14 @@ import { Flex } from '../../common/Flex';
 import { useAppStore } from '../../useAppStore';
 import { colors } from '../../common/colors';
 import { useState } from 'react';
+import { cloneDeep } from 'lodash';
+import ConfirmButton from '../../common/ConfirmButton';
 
 export const TemplateBuilder = () => {
   const { template } = useTemplateStore();
-  const createTemplate = useCreateTemplate();
+  const createTemplate = useCreateTemplate(() => {
+    setSection('checklists');
+  });
   const { setSection } = useAppStore();
   const [showSaveResult, setShowSaveResult] = useState<boolean>(true);
 
@@ -45,9 +49,22 @@ export const TemplateBuilder = () => {
           </Flex>
         </Alert>}
 
-      <Button className={styles['app-btn']} onClick={() => {
-        createTemplate.mutate(template);
-      }}>Save</Button>
+      <Flex fullWidth gap16>
+        <Button className={styles['app-btn']} onClick={() => {
+          createTemplate.mutate(template);
+        }}>Save</Button>
+
+        <ConfirmButton
+          text='Are you sure you want to publish? No further changes can be done'
+          buttonProps={{ className: styles['app-btn'] }} onConfirm={() => {
+            const toPublish = cloneDeep(template);
+            toPublish.status = 'published';
+            createTemplate.mutate(toPublish);
+          }}>
+          <i className="bi bi-upload" style={{ fontSize: "16px", WebkitTextStrokeWidth: "0.7px", marginRight: "10px", cursor: "pointer" }} />
+          Publish
+        </ConfirmButton>
+      </Flex>
     </>
   )
 }
