@@ -14,14 +14,15 @@ import { colors } from '../../common/colors';
 import { useState } from 'react';
 import { cloneDeep } from 'lodash';
 import ConfirmButton from '../../common/ConfirmButton';
+import { queryKeysTemplates } from '../../api/query-keys';
+import { useQueryClient } from '@tanstack/react-query';
 
 export const TemplateBuilder = () => {
   const { template } = useTemplateStore();
-  const createTemplate = useCreateTemplate(() => {
-    setSection('checklists');
-  });
+  const createTemplate = useCreateTemplate();
   const { setSection } = useAppStore();
   const [showSaveResult, setShowSaveResult] = useState<boolean>(true);
+  const queryClient = useQueryClient();
 
   return (
     <>
@@ -51,7 +52,12 @@ export const TemplateBuilder = () => {
 
       <Flex fullWidth gap16>
         <Button className={styles['app-btn']} onClick={() => {
-          createTemplate.mutate(template);
+          createTemplate.mutate(template, {
+            onSuccess: () => {
+              queryClient.invalidateQueries({ queryKey: queryKeysTemplates.list() });
+              setShowSaveResult(true);
+            }
+          });
         }}>Save</Button>
 
         <ConfirmButton
@@ -59,7 +65,9 @@ export const TemplateBuilder = () => {
           buttonProps={{ className: styles['app-btn'] }} onConfirm={() => {
             const toPublish = cloneDeep(template);
             toPublish.status = 'published';
-            createTemplate.mutate(toPublish);
+            createTemplate.mutate(toPublish, {
+              onSuccess: () => setSection('checklists')
+            });
           }}>
           <i className="bi bi-upload" style={{ fontSize: "16px", WebkitTextStrokeWidth: "0.7px", marginRight: "10px", cursor: "pointer" }} />
           Publish
