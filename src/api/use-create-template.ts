@@ -5,10 +5,13 @@ import { Template } from "../builder/template/template";
 
 const url = `${apiBaseUrl}/checklist/templates`;
 
-export const useCreateTemplate = () => {
+export const useCreateTemplate = (
+  onSuccess?: (data: Template, variables: Template, context: unknown) => unknown
+) => {
   return useMutation<Template, Error, Template>({
     mutationFn: async (template: Template) => {
       return (await axios.post(url, template, apiHeader())).data;
     },
+    onSuccess,
   });
 };
