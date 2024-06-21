@@ -18,17 +18,12 @@ export const App = () => {
 
         <Flex style={{ position: "absolute", right: "12px" }} >
 
-
-
           <Dropdown>
             <Dropdown.Toggle as={IconToggle}><i style={{ fontSize: "26px", WebkitTextStrokeWidth: "0.7px", color: "white" }} className="bi bi-list" /></Dropdown.Toggle>
             <Dropdown.Menu>
 
               <Dropdown.Item onClick={() => setSection('checklists')}>
                 Checklists
-              </Dropdown.Item>
-              <Dropdown.Item onClick={() => setSection('builder')}>
-                Checklist builder
               </Dropdown.Item>
 
             </Dropdown.Menu>
