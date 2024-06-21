@@ -44,6 +44,7 @@ interface CssExports {
   "horizontal-reverse": string;
   horizontalReverse: string;
   "inline-flex": string;
+  "contents-flex": string;
   inlineFlex: string;
   "margin-left-auto": string;
   marginLeftAuto: string;

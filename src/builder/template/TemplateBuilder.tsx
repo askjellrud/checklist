@@ -5,13 +5,19 @@ import { TextRenderer } from './items/TextRenderer';
 import { TitleRenderer } from './items/TitleRenderer';
 import { SelectRenderer } from './items/SelectRenderer';
 import { DividerRenderer } from './items/DividerRenderer';
-import { Button } from 'react-bootstrap';
+import { Alert, Button } from 'react-bootstrap';
 import styles from '../../App.module.scss';
 import { useCreateTemplate } from '../../api/use-create-template';
+import { Flex } from '../../common/Flex';
+import { useAppStore } from '../../useAppStore';
+import { colors } from '../../common/colors';
+import { useState } from 'react';
 
 export const TemplateBuilder = () => {
   const { template } = useTemplateStore();
   const createTemplate = useCreateTemplate();
+  const { setSection } = useAppStore();
+  const [showSaveResult, setShowSaveResult] = useState<boolean>(true);
 
   return (
     <>
@@ -28,8 +34,18 @@ export const TemplateBuilder = () => {
           <DividerRenderer key={item.id} item={item as DividerItem} />);
         return null;
       })}
-      <Button className={styles['app-btn']} onClick={() => {
+      {createTemplate.isSuccess &&
+        <Alert variant='light' onClose={() => setShowSaveResult(false)} dismissible>
 
+          <Flex>The checklist is saved. If you are done you can go to the&nbsp;
+            <Flex style={{ color: colors.themeDarker }} contents onClick={() => {
+              setSection('checklists');
+              setShowSaveResult(true);
+            }}>checklists</Flex>
+          </Flex>
+        </Alert>}
+
+      <Button className={styles['app-btn']} onClick={() => {
         createTemplate.mutate(template);
       }}>Save</Button>
     </>

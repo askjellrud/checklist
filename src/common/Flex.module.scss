@@ -6,6 +6,10 @@
   display: inline-flex;
 }
 
+.contents-flex {
+  display: contents;
+}
+
 .horizontal {
   flex-direction: row;
   align-items: center;

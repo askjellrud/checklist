@@ -18,6 +18,7 @@ export type FlexProps = {
   dataCy?: string;
 
   inline?: boolean;
+  contents?: boolean;
   fullWidth?: boolean;
   fullHeight?: boolean;
   halfWidth?: boolean;
@@ -89,6 +90,7 @@ export const Flex = React.forwardRef<HTMLDivElement, FlexProps>(({
   name,
   dataCy,
   inline = false,
+  contents = false,
   vertical = false,
   horizontalReverse = false,
   spaceBetween = false,
@@ -156,8 +158,9 @@ export const Flex = React.forwardRef<HTMLDivElement, FlexProps>(({
 
   const allClassNames = classNames(
     className,
-    !inline && styles.flex,
-    inline && styles.inlineFlex,
+    !inline && !contents && styles['flex'],
+    inline && styles['inline-flex'],
+    contents && styles['contents-flex'],
     direction,
     (!!onClick || pointer) && styles['cursor-pointer'],
     spaceBetween && styles['space-between'],
