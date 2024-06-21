@@ -19,8 +19,8 @@ export const Templates = () => {
   return (
     <Flex fullWidth vertical padding16 gap16>
       {templates.data.map((template, index) => (
-        <Flex key={index} style={{ border: "1px solid #bbb" }} fullWidth paddingRight16 spaceBetween>
-          <Flex center fullWidth padding8>
+        <Flex key={index} style={{ border: "1px solid #bbb" }} fullWidth paddingRight16 paddingLeft16 spaceBetween>
+          <Flex style={{ fontWeight: "200", fontSize: "18px" }} center fullWidth padding8>
             {template.name}
           </Flex>
           <i className="bi bi-pencil" onClick={() => {
