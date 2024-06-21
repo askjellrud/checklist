@@ -17,7 +17,7 @@ export const Checklists = () => {
   }
 
   return (
-    <Flex fullWidth vertical padding16 gap16>
+    <Flex style={{ paddingTop: "20px" }} fullWidth vertical paddingLeft16 paddingRight16 gap16>
       {templates.data.map((template, index) => (
         <Flex key={index} style={{ border: "1px solid #bbb" }} fullWidth paddingRight16 paddingLeft16 spaceBetween>
           <Flex style={{ fontWeight: "200", fontSize: "18px" }} center fullWidth padding8>
@@ -31,7 +31,7 @@ export const Checklists = () => {
 
         </Flex>
       ))}
-      <Flex fullWidth center>
+      <Flex fullWidth center paddingTop8>
         <Button className={styles['app-btn']} onClick={() => {
           resetTemplate();
           setSection('builder');
