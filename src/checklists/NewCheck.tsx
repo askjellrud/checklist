@@ -7,10 +7,12 @@ import { colors } from '../common/colors';
 import { useCreateCheck } from '../api/use-create-check';
 import { useQueryClient } from '@tanstack/react-query';
 import { queryKeysChecks } from '../api/query-keys';
+import DatePicker from 'react-datepicker';
 
 export type Check = {
     id: string;
     checklistId: string;
+    checkAt: number | null;
     area: string;
     responsible: string;
 }
@@ -23,6 +25,7 @@ export const NewCheck: React.FC<ConfirmButtonProps> = ({ checklistId }) => {
     const [showModal, setShowModal] = useState(false);
     const [area, setArea] = useState('');
     const [responsible, setResponsible] = useState('');
+    const [checkAt, setCheckAt] = useState<number | null>(Date.now());
     const createCheck = useCreateCheck();
     const queryClient = useQueryClient();
 
@@ -30,6 +33,7 @@ export const NewCheck: React.FC<ConfirmButtonProps> = ({ checklistId }) => {
     const onCreate = () => {
         const check: Check = {
             id: randomId(),
+            checkAt,
             checklistId,
             area,
             responsible
@@ -55,6 +59,24 @@ export const NewCheck: React.FC<ConfirmButtonProps> = ({ checklistId }) => {
                     <Modal.Title>New check</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
+
+                    <Flex padding16 fullWidth>
+                        <Flex rightAlign paddingRight16 style={{ width: "30%" }}>
+                            Date
+                        </Flex>
+                        <Flex fullWidth>
+                            <DatePicker
+                                selected={checkAt ? new Date(checkAt) : null}
+                                onChange={(date) => {
+                                    const newDate = date?.getTime() || null;
+                                    console.log(newDate);
+                                    setCheckAt(newDate);
+                                }}
+                                className="form-control"
+                                dateFormat="dd/MM-yyyy"
+                            />
+                        </Flex>
+                    </Flex>
 
                     <Flex padding16 fullWidth>
                         <Flex rightAlign paddingRight16 style={{ width: "30%" }}>
@@ -91,7 +113,7 @@ export const NewCheck: React.FC<ConfirmButtonProps> = ({ checklistId }) => {
                         Create
                     </Button>
                 </Modal.Footer>
-            </Modal>
+            </Modal >
         </>
     );
 };
