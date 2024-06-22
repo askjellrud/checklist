@@ -1,5 +1,5 @@
 import { Button } from 'react-bootstrap';
-import { useQueryTemplates } from '../api/use-query-temlates'
+import { useGetTemplateList } from '../api/use-get-template-list'
 import { Flex } from '../common/Flex'
 import styles from '../App.module.scss'
 import { useAppStore } from '../useAppStore';
@@ -8,7 +8,7 @@ import { colors } from '../common/colors';
 import { Checklist } from './Checklist';
 
 export const Checklists = () => {
-  const templates = useQueryTemplates();
+  const templates = useGetTemplateList();
   const { setSection } = useAppStore();
   const { resetTemplate } = useTemplateStore();
 

@@ -4,6 +4,9 @@ import styles from '../App.module.scss'
 import { Flex } from '../common/Flex';
 import { randomId } from '../common/string';
 import { colors } from '../common/colors';
+import { useCreateCheck } from '../api/use-create-check';
+import { useQueryClient } from '@tanstack/react-query';
+import { queryKeysChecks } from '../api/query-keys';
 
 export type Check = {
     id: string;
@@ -20,6 +23,8 @@ export const NewCheck: React.FC<ConfirmButtonProps> = ({ checklistId }) => {
     const [showModal, setShowModal] = useState(false);
     const [area, setArea] = useState('');
     const [responsible, setResponsible] = useState('');
+    const createCheck = useCreateCheck();
+    const queryClient = useQueryClient();
 
 
     const onCreate = () => {
@@ -29,7 +34,11 @@ export const NewCheck: React.FC<ConfirmButtonProps> = ({ checklistId }) => {
             area,
             responsible
         }
-        console.log('Create check...', check);
+        createCheck.mutate(check, {
+            onSuccess: () => {
+                queryClient.invalidateQueries({ queryKey: queryKeysChecks.listByChecklist(checklistId) });
+            }
+        })
         setShowModal(false);
     };
 
