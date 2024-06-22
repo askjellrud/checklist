@@ -1,8 +1,8 @@
 import { Form } from "react-bootstrap";
-import { Flex } from "../../../common/Flex";
-import { SelectItem } from "../../template/template";
 import { ItemRenderer } from "./ItemRenderer";
 import { useState } from "react";
+import { Flex } from "../../common/Flex";
+import { SelectItem } from "../../builder/template/template";
 
 
 type Props = {

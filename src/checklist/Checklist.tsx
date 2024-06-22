@@ -1,12 +1,12 @@
-import { DividerItem, LabelItem, SelectItem, TextItem, TitleItem } from '../template/template';
-import { useTemplateStore } from '../template/useTemplateStore';
+import { DividerItem, LabelItem, SelectItem, TextItem, TitleItem } from '../builder/template/template';
+import { useTemplateStore } from '../builder/template/useTemplateStore';
 import { DividerRenderer } from './items/DividerRenderer';
 import { LabelRenderer } from './items/LabelRenderer';
 import { SelectRenderer } from './items/SelectRenderer';
 import { TextRenderer } from './items/TextRenderer';
 import { TitleRenderer } from './items/TitleRenderer';
 
-export const Preview = () => {
+export const Checklist = () => {
   const { template } = useTemplateStore();
 
   return (

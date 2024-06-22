@@ -75,6 +75,7 @@ interface CssExports {
   "padding-right-24": string;
   "padding-right-4": string;
   "padding-right-8": string;
+  "padding-top-32": string;
   "padding-top-16": string;
   "padding-top-4": string;
   "padding-top-8": string;

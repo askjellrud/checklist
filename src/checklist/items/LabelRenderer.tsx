@@ -1,4 +1,4 @@
-import { LabelItem } from "../../template/template";
+import { LabelItem } from "../../builder/template/template";
 import { ItemRenderer } from "./ItemRenderer";
 
 

@@ -1,6 +1,6 @@
+import { Checklist } from '../checklist/Checklist'
 import { Flex } from '../common/Flex'
 import { TemplateBuilder } from './template/TemplateBuilder'
-import { Preview } from './preview/Preview'
 
 export const Builder = () => {
 
@@ -10,7 +10,7 @@ export const Builder = () => {
         <TemplateBuilder />
       </Flex>
       <Flex vertical style={{ borderLeft: "1px solid #ccc", overflow: "auto" }} padding32 halfWidth fullHeight>
-        <Preview />
+        <Checklist />
       </Flex>
     </>
   )

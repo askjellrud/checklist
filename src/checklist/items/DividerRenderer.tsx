@@ -1,5 +1,5 @@
-import { Flex } from "../../../common/Flex";
-import { DividerItem } from "../../template/template";
+import { DividerItem } from "../../builder/template/template";
+import { Flex } from "../../common/Flex";
 import { ItemRenderer } from "./ItemRenderer";
 
 

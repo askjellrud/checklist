@@ -67,6 +67,7 @@ export type FlexProps = {
   paddingTop4?: boolean;
   paddingTop8?: boolean;
   paddingTop16?: boolean;
+  paddingTop32?: boolean;
   paddingTopBottom4?: boolean;
   paddingTopBottom8?: boolean;
   positionRelative?: boolean;
@@ -134,6 +135,7 @@ export const Flex = React.forwardRef<HTMLDivElement, FlexProps>(({
   paddingTop4 = false,
   paddingTop8 = false,
   paddingTop16 = false,
+  paddingTop32 = false,
   paddingTopBottom4 = false,
   paddingTopBottom8 = false,
   positionRelative = false,
@@ -215,6 +217,7 @@ export const Flex = React.forwardRef<HTMLDivElement, FlexProps>(({
     paddingTop4 && styles['padding-top-4'],
     paddingTop8 && styles['padding-top-8'],
     paddingTop16 && styles['padding-top-16'],
+    paddingTop32 && styles['padding-top-32'],
     paddingTopBottom4 && styles['padding-bottom-4'],
     paddingTopBottom8 && styles['padding-bottom-8'],
     positionRelative && styles.positionRelative,

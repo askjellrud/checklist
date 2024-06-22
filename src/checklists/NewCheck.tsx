@@ -101,7 +101,6 @@ export const NewCheck: React.FC<ConfirmButtonProps> = ({ checklistId }) => {
                             value={responsible}
                             onChange={(event) => setResponsible(event.target.value)}
                         />
-
                     </Flex>
 
                 </Modal.Body>

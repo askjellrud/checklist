@@ -1,5 +1,5 @@
-import { Flex } from "../../../common/Flex";
-import { TitleItem } from "../../template/template";
+import { TitleItem } from "../../builder/template/template";
+import { Flex } from "../../common/Flex";
 import { ItemRenderer } from "./ItemRenderer";
 
 

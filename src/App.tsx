@@ -1,10 +1,10 @@
 import { Builder } from './builder/Builder'
 import { Flex } from './common/Flex'
-import { Checklists } from './checklists/Checklists'
 import { useAppStore } from './useAppStore'
 import { colors } from './common/colors'
 import { Dropdown } from 'react-bootstrap'
 import { IconToggle } from './common/IconToggle'
+import { ChecklistList } from './checklists/ChecklistList'
 
 export const App = () => {
   const { section, setSection } = useAppStore();
@@ -34,7 +34,7 @@ export const App = () => {
       </Flex>
 
       <Flex style={{ height: "calc(100% - 64px)" }} fullWidth alignStart>
-        {section === "checklists" && <Checklists />}
+        {section === "checklists" && <ChecklistList />}
         {section === "builder" && <Builder />}
       </Flex>
     </Flex>
