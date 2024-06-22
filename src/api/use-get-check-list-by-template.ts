@@ -5,16 +5,19 @@ import { GET } from "./axios";
 import { queryKeysChecks } from "./query-keys";
 import { apiBaseUrl } from "./urls";
 
-const url = apiBaseUrl + "/checklist/checks";
+const url = (templateId: string) =>
+  apiBaseUrl + "/checklist/checks?checklistId=" + templateId;
 const axios = (
+  templateId: string,
   cancelToken?: CancelTokenSource
-): Promise<AxiosResponse<Check[]>> => GET(url, undefined, { cancelToken });
+): Promise<AxiosResponse<Check[]>> =>
+  GET(url(templateId), undefined, { cancelToken });
 
 export const useGetCheckListByTemplate = (
   templateId: string
 ): UseQueryResult<Check[]> =>
   useQuery<Check[]>({
     queryKey: queryKeysChecks.listByChecklist(templateId),
-    queryFn: () => axios().then((response) => response.data),
+    queryFn: () => axios(templateId).then((response) => response.data),
     refetchOnWindowFocus: false,
   });

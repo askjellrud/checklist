@@ -25,9 +25,10 @@ export const ChecklistDetails: React.FC<Props> = ({ template }) => {
         {
           getCheckListByTemplate.data.map((check) => (
             <Row>
-              <Col>{check.id}</Col>
+              <Col>DATE</Col>
               <Col>{check.area}</Col>
               <Col>{check.responsible}</Col>
+              <Col>QR</Col>
             </Row>
           ))
         }
