@@ -1,13 +1,15 @@
-import { DividerItem, LabelItem, SelectItem, TextItem, TitleItem } from '../builder/template/template';
-import { useTemplateStore } from '../builder/template/useTemplateStore';
+import { DividerItem, LabelItem, SelectItem, Template, TextItem, TitleItem } from '../builder/template/template';
 import { DividerRenderer } from './items/DividerRenderer';
 import { LabelRenderer } from './items/LabelRenderer';
 import { SelectRenderer } from './items/SelectRenderer';
 import { TextRenderer } from './items/TextRenderer';
 import { TitleRenderer } from './items/TitleRenderer';
 
-export const Checklist = () => {
-  const { template } = useTemplateStore();
+type Props = {
+  template: Template;
+}
+
+export const Checklist = ({ template }: Props) => {
 
   return (
     <>

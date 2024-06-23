@@ -1,11 +1,14 @@
 import { Button, Modal } from 'react-bootstrap';
+import { Checklist } from '../checklist/Checklist';
+import { Template } from '../builder/template/template';
 
 type Props = {
   show: boolean,
-  onHide: () => void
+  onHide: () => void,
+  checklist: Template
 };
 
-export const ChecklistResultModal = ({ show, onHide }: Props) => {
+export const ChecklistResultModal = ({ show, onHide, checklist }: Props) => {
 
   return (
     <Modal show={show} onHide={onHide}>
@@ -13,8 +16,7 @@ export const ChecklistResultModal = ({ show, onHide }: Props) => {
         <Modal.Title>Resullt</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        Result
-
+        <Checklist template={checklist} />
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={() => onHide()}>
