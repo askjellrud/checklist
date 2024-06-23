@@ -4,8 +4,8 @@ export const randomId = () => {
   return uuidv4().replace(/-/g, "");
 };
 
-export const timeToSimpleDate = (time: number) => {
-  new Date(time)
+export const timeToSimpleDate = (time: number): string => {
+  return new Date(time)
     .toLocaleDateString("en-GB")
     .replace(/(\d{2})\/(\d{2})\/(\d{4})/, "$1/$2-$3");
 };

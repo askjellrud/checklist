@@ -5,6 +5,11 @@ export const apiBaseUrl =
     ? "http://localhost:8081"
     : "https://hub.catenda.com";
 
+export const baseUrl =
+  import.meta.env.MODE === "development"
+    ? "http://localhost:3000/checklist"
+    : "https://hub.catenda.com/checklist";
+
 export const apiHeader = () => {
   return {
     withCredentials: true,

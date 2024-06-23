@@ -5,18 +5,24 @@ import { colors } from './common/colors'
 import { Dropdown } from 'react-bootstrap'
 import { IconToggle } from './common/IconToggle'
 import { ChecklistList } from './checklists/ChecklistList'
-import { Check } from './check/Check'
+import { CheckView } from './check/CheckView'
+import { useLocation } from 'react-router-dom'
 
 export const App = () => {
   const { section, setSection } = useSectionStore();
+  const check = new URLSearchParams(useLocation().search).get('check');
 
   return (
     <Flex vertical fullWidth fullHeight>
 
       <Flex center style={{ height: "64px", color: "white", fontSize: "24px", fontWeight: "600", backgroundColor: colors.theme, position: "relative" }} fullWidth>
-        {section === 'checklists' && "Checklists"}
-        {section === 'builder' && "Checklist Builder"}
-        {section === 'check' && "Check"}
+        {check ? (
+          "Check"
+        ) : section === 'builder' ? (
+          "Checklist Builder"
+        ) : (
+          "Checklists"
+        )}
 
         {section === 'builder' &&
           <Flex style={{ position: "absolute", right: "12px" }} >
@@ -36,9 +42,13 @@ export const App = () => {
       </Flex>
 
       <Flex style={{ height: "calc(100% - 64px)" }} fullWidth alignStart>
-        {section === "checklists" && <ChecklistList />}
-        {section === "builder" && <Builder />}
-        {section === "check" && <Check />}
+        {check ? (
+          <CheckView checkId={check} />
+        ) : section === 'builder' ? (
+          <Builder />
+        ) : (
+          <ChecklistList />
+        )}
       </Flex>
     </Flex>
   )

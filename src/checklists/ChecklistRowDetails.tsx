@@ -43,7 +43,7 @@ export const ChecklistRowDetails: React.FC<Props> = ({ template }) => {
                 <i className="bi bi-file-earmark-check" onClick={() => {
                   setShowChecklistInfo(true);
                 }} style={{ fontSize: "18px", WebkitTextStrokeWidth: "0.3px", color: colors.themeDarker, marginRight: "10px", cursor: "pointer" }} />
-                <ChecklistInfoModal show={showChecklistInfo} onHide={() => { setShowChecklistInfo(false) }} />
+                <ChecklistInfoModal check={check} show={showChecklistInfo} onHide={() => { setShowChecklistInfo(false) }} />
               </Col>
               <Col style={{ maxWidth: "70px", display: 'flex', justifyContent: 'center' }}>
                 <i className="bi bi-clipboard-pulse" onClick={() => {
@@ -55,7 +55,6 @@ export const ChecklistRowDetails: React.FC<Props> = ({ template }) => {
           ))}
         </Container>
       }
-
 
       <Flex fullWidth horizontalReverse paddingRight8 paddingTop8>
         <NewCheck checklistId={template.id} />
