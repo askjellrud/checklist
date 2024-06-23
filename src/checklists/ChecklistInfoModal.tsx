@@ -1,3 +1,4 @@
+import QRCode from 'qrcode.react';
 import { Button, Modal } from 'react-bootstrap';
 
 type Props = {
@@ -14,7 +15,7 @@ export const ChecklistInfoModal = ({ show, onHide }: Props) => {
       </Modal.Header>
       <Modal.Body>
         Info
-
+        <QRCode value={"http://asdfasd"} />
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={() => onHide()}>
