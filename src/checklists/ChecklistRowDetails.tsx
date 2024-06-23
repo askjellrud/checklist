@@ -57,7 +57,7 @@ export const ChecklistRowDetails: React.FC<Props> = ({ template }) => {
       }
 
 
-      <Flex fullWidth horizontalReverse paddingRight8>
+      <Flex fullWidth horizontalReverse paddingRight8 paddingTop8>
         <NewCheck checklistId={template.id} />
       </Flex>
 
