@@ -2,14 +2,14 @@ import { Button } from 'react-bootstrap';
 import { useGetTemplateList } from '../api/use-get-template-list'
 import { Flex } from '../common/Flex'
 import styles from '../App.module.scss'
-import { useAppStore } from '../useAppStore';
+import { useSectionStore } from '../useSectionStore';
 import { useTemplateStore } from '../builder/template/useTemplateStore';
 import { colors } from '../common/colors';
 import { ChecklistRow } from './ChecklistRow';
 
 export const ChecklistList = () => {
   const templates = useGetTemplateList();
-  const { setSection } = useAppStore();
+  const { setSection } = useSectionStore();
   const { resetTemplate } = useTemplateStore();
 
   if (!templates.data) {

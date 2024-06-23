@@ -9,7 +9,7 @@ import { Alert, Button } from 'react-bootstrap';
 import styles from '../../App.module.scss';
 import { useCreateTemplate } from '../../api/use-create-template';
 import { Flex } from '../../common/Flex';
-import { useAppStore } from '../../useAppStore';
+import { useSectionStore } from '../../useSectionStore';
 import { colors } from '../../common/colors';
 import { useState } from 'react';
 import { cloneDeep } from 'lodash';
@@ -20,7 +20,7 @@ import { useQueryClient } from '@tanstack/react-query';
 export const TemplateBuilder = () => {
   const { template } = useTemplateStore();
   const createTemplate = useCreateTemplate();
-  const { setSection } = useAppStore();
+  const { setSection } = useSectionStore();
   const [showSaveResult, setShowSaveResult] = useState<boolean>(true);
   const queryClient = useQueryClient();
 

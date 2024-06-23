@@ -2,7 +2,7 @@ import { cloneDeep } from 'lodash';
 import { Template } from '../builder/template/template';
 import { Flex } from '../common/Flex';
 import { useTemplateStore } from '../builder/template/useTemplateStore';
-import { useAppStore } from '../useAppStore';
+import { useSectionStore } from '../useSectionStore';
 import { colors } from '../common/colors';
 import { useState } from 'react';
 import { ChecklistRowDetails } from './ChecklistRowDetails';
@@ -13,7 +13,7 @@ type Props = {
 
 export const ChecklistRow: React.FC<Props> = ({ template }) => {
   const { setTemplate } = useTemplateStore();
-  const { setSection } = useAppStore();
+  const { setSection } = useSectionStore();
   const [showDetails, setShowDetails] = useState(false);
 
   return (
