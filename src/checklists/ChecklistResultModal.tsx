@@ -16,7 +16,7 @@ export const ChecklistResultModal = ({ show, onHide, checklist }: Props) => {
         <Modal.Title>Resullt</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Checklist template={checklist} />
+        <Checklist mode='result' template={checklist} />
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={() => onHide()}>

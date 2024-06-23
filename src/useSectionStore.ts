@@ -1,13 +1,13 @@
 import { create } from "zustand";
 
-type Section = "builder" | "checklists";
+type Section = "builder" | "checklists" | "check";
 
 type Store = {
   section: Section;
   setSection: (section: Section) => void;
 };
 
-export const useAppStore = create<Store>((set) => ({
+export const useSectionStore = create<Store>((set) => ({
   section: "checklists",
   setSection: (section: Section) =>
     set((state) => {

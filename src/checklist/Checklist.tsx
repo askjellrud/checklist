@@ -1,4 +1,5 @@
 import { DividerItem, LabelItem, SelectItem, Template, TextItem, TitleItem } from '../builder/template/template';
+import { Check } from '../checklists/NewCheck';
 import { DividerRenderer } from './items/DividerRenderer';
 import { LabelRenderer } from './items/LabelRenderer';
 import { SelectRenderer } from './items/SelectRenderer';
@@ -6,7 +7,9 @@ import { TextRenderer } from './items/TextRenderer';
 import { TitleRenderer } from './items/TitleRenderer';
 
 type Props = {
+  mode: 'check' | 'result' | 'builder';
   template: Template;
+  check?: Check;
 }
 
 export const Checklist = ({ template }: Props) => {

@@ -1,22 +1,24 @@
 import { Builder } from './builder/Builder'
 import { Flex } from './common/Flex'
-import { useAppStore } from './useAppStore'
+import { useSectionStore } from './useSectionStore'
 import { colors } from './common/colors'
 import { Dropdown } from 'react-bootstrap'
 import { IconToggle } from './common/IconToggle'
 import { ChecklistList } from './checklists/ChecklistList'
+import { Check } from './check/Check'
 
 export const App = () => {
-  const { section, setSection } = useAppStore();
+  const { section, setSection } = useSectionStore();
 
   return (
     <Flex vertical fullWidth fullHeight>
 
       <Flex center style={{ height: "64px", color: "white", fontSize: "24px", fontWeight: "600", backgroundColor: colors.theme, position: "relative" }} fullWidth>
-        {section == 'checklists' && "Checklists"}
-        {section == 'builder' && "Checklist Builder"}
+        {section === 'checklists' && "Checklists"}
+        {section === 'builder' && "Checklist Builder"}
+        {section === 'check' && "Check"}
 
-        {section !== 'checklists' &&
+        {section === 'builder' &&
           <Flex style={{ position: "absolute", right: "12px" }} >
 
             <Dropdown>
@@ -36,6 +38,7 @@ export const App = () => {
       <Flex style={{ height: "calc(100% - 64px)" }} fullWidth alignStart>
         {section === "checklists" && <ChecklistList />}
         {section === "builder" && <Builder />}
+        {section === "check" && <Check />}
       </Flex>
     </Flex>
   )

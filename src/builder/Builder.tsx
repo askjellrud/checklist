@@ -12,7 +12,7 @@ export const Builder = () => {
         <TemplateBuilder />
       </Flex>
       <Flex vertical style={{ borderLeft: "1px solid #ccc", overflow: "auto" }} padding32 halfWidth fullHeight>
-        <Checklist template={template} />
+        <Checklist mode='builder' template={template} />
       </Flex>
     </>
   )
