@@ -4,22 +4,23 @@ import { Flex } from '../common/Flex';
 import { NewCheck } from './NewCheck';
 import { useGetCheckListByTemplate } from '../api/use-get-check-list-by-template';
 import { colors } from '../common/colors';
+import { useState } from 'react';
+import { ChecklistInfoModal } from './ChecklistInfoModal';
+import { ChecklistResultModal } from './ChecklistResultModal';
 
 type Props = {
   template: Template;
 };
 
 export const ChecklistRowDetails: React.FC<Props> = ({ template }) => {
-
   const getCheckListByTemplate = useGetCheckListByTemplate(template.id);
+  const [showChecklistInfo, setShowChecklistInfo] = useState(false);
+  const [showChecklistResult, setShowChecklistResult] = useState(false);
 
   const data = getCheckListByTemplate.data;
-
   if (!data) {
     return null;
   }
-
-
 
   return (
     <Flex fullWidth vertical gap8 padding16 style={{ borderTop: "1px dotted #ccc" }}>
@@ -40,15 +41,15 @@ export const ChecklistRowDetails: React.FC<Props> = ({ template }) => {
               <Col style={{ flex: 3 }}>{check.responsible}</Col>
               <Col style={{ maxWidth: "70px", display: 'flex', justifyContent: 'center' }}>
                 <i className="bi bi-file-earmark-check" onClick={() => {
-                  // TODO
+                  setShowChecklistInfo(true);
                 }} style={{ fontSize: "18px", WebkitTextStrokeWidth: "0.3px", color: colors.themeDarker, marginRight: "10px", cursor: "pointer" }} />
-
+                <ChecklistInfoModal show={showChecklistInfo} onHide={() => { setShowChecklistInfo(false) }} />
               </Col>
               <Col style={{ maxWidth: "70px", display: 'flex', justifyContent: 'center' }}>
                 <i className="bi bi-clipboard-pulse" onClick={() => {
-                  // TODO
+                  setShowChecklistResult(true);
                 }} style={{ fontSize: "18px", WebkitTextStrokeWidth: "0.3px", color: colors.themeDarker, marginRight: "10px", cursor: "pointer" }} />
-
+                <ChecklistResultModal show={showChecklistResult} onHide={() => { setShowChecklistResult(false) }} />
               </Col>
             </Row>
           ))}
