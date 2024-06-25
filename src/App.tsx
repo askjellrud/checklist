@@ -17,7 +17,7 @@ export const App = () => {
 
       <Flex center style={{ height: "64px", color: "white", fontSize: "24px", fontWeight: "600", backgroundColor: colors.theme, position: "relative" }} fullWidth>
         {check ? (
-          "Check"
+          "Checklist"
         ) : section === 'builder' ? (
           "Checklist Builder"
         ) : (

@@ -1,35 +1,70 @@
+import { Button } from 'react-bootstrap';
 import { useGetCheck } from '../api/use-get-check';
 import { useGetChecklist } from '../api/use-get-checklist';
 import { Checklist } from '../checklist/Checklist';
 import { Flex } from '../common/Flex'
 import { timeToSimpleDate } from '../common/string';
+import styles from '../App.module.scss';
+import { useEffect, useState } from 'react';
+import { Check } from '../checklists/NewCheck';
 
 type Props = {
   checkId: string;
 }
 
 export const CheckView = ({ checkId }: Props) => {
-  const check = useGetCheck(checkId);
-  const template = useGetChecklist(check.data?.checklistId || "undefined", { enabled: !!check.data?.checklistId });
+  const [check, setCheck] = useState<Check>();
+  const fetchedCheck = useGetCheck(checkId);
+  const { data: template } = useGetChecklist(check?.checklistId || "undefined", { enabled: !!check?.checklistId });
 
-  if (!check.data || !template.data) {
+  useEffect(() => {
+    if (fetchedCheck && fetchedCheck.isFetched) {
+      setCheck(fetchedCheck.data);
+    }
+  }, [fetchedCheck]);
+
+  if (!check || !template) {
     return null;
   }
-  console.log(check.data, template.data);
 
-  const checkAt = check.data.checkAt ? timeToSimpleDate(check.data.checkAt) : "?";
+  const checkAt = check.checkAt ? timeToSimpleDate(check.checkAt) : "?";
 
   return (
-    <Flex fullWidth vertical paddingTop32 paddingLeft16 paddingRight16 gap16>
+    <Flex fullWidth fullHeight vertical padding32 gap16>
 
-      <Flex fullWidth>
-        <Flex style={{ width: "30%" }}>
+      <Flex fullWidth vertical gap16 padding32 style={{ backgroundColor: "#e1e1e1", border: "3px solid #ddd" }}>
+        <Flex fullWidth>
+          <Flex horizontalReverse paddingRight16 style={{ width: "30%" }}>
+            Date
+          </Flex>
           {checkAt}
+        </Flex>
+
+        <Flex fullWidth>
+          <Flex horizontalReverse paddingRight16 style={{ width: "30%" }}>
+            Area
+          </Flex>
+          {check.area}
+        </Flex>
+
+        <Flex fullWidth>
+          <Flex horizontalReverse paddingRight16 style={{ width: "30%" }}>
+            Reponsible
+          </Flex>
+          {check.responsible}
         </Flex>
       </Flex>
 
-      TODO CHECK
-      <Checklist mode='check' template={template.data} ></Checklist>
-    </Flex >
+      <Flex style={{ paddingLeft: "7%" }} paddingTop16 vertical fullWidth>
+        <Checklist mode='check' template={template} ></Checklist>
+      </Flex>
+
+      <Flex style={{ paddingLeft: "7%" }} paddingTop8 fullWidth>
+        <Button className={styles['app-btn']} onClick={() => {
+          // Keep check in state and update check.data
+        }}>Submit</Button>
+      </Flex >
+
+    </Flex>
   )
 }
