@@ -1,22 +1,15 @@
-import { useState } from "react";
 import { ItemRenderer } from "./ItemRenderer";
 import { Form } from "react-bootstrap";
-import { TextItem } from "../../builder/template/template";
+import { TextItem, TextValue } from "../../builder/template/template";
 import { Flex } from "../../common/Flex";
 
 type Props = {
     item: TextItem;
+    value: TextValue;
+    valueChanged: (value: TextValue) => void;
 };
 
-export const TextRenderer: React.FC<Props> = ({ item }) => {
-    const [value, setValue] = useState(item.defaultValue);
-    const [defaultValue, setDefaultValue] = useState(item.defaultValue);
-
-    if (defaultValue != item.defaultValue) {
-        setValue(item.defaultValue);
-        setDefaultValue(item.defaultValue);
-    }
-
+export const TextRenderer: React.FC<Props> = ({ item, value, valueChanged }) => {
     return (
         <ItemRenderer>
             {item.label}
@@ -25,9 +18,9 @@ export const TextRenderer: React.FC<Props> = ({ item }) => {
                 {!item.isMultiline && <Form.Control
                     type="text"
                     placeholder=""
-                    value={value}
+                    value={value.text}
                     onChange={(event) => {
-                        setValue(event.target.value)
+                        valueChanged({ ...value, text: event.target.value })
                     }}
                 />}
 
@@ -35,8 +28,8 @@ export const TextRenderer: React.FC<Props> = ({ item }) => {
                     as="textarea"
                     rows={5}
                     placeholder=""
-                    value={value}
-                    onChange={(event) => setValue(event.target.value)}
+                    value={value.text}
+                    onChange={(event) => valueChanged({ ...value, text: event.target.value })}
                 />}
 
             </Flex>

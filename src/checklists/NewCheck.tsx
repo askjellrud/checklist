@@ -8,6 +8,7 @@ import { useCreateCheck } from '../api/use-create-check';
 import { useQueryClient } from '@tanstack/react-query';
 import { queryKeysChecks } from '../api/query-keys';
 import DatePicker from 'react-datepicker';
+import { CheckValue } from '../builder/template/template';
 
 export type Check = {
     id: string;
@@ -15,6 +16,7 @@ export type Check = {
     checkAt: number | null;
     area: string;
     responsible: string;
+    values: { [key: string]: CheckValue; }
 }
 
 interface ConfirmButtonProps {
@@ -36,7 +38,8 @@ export const NewCheck: React.FC<ConfirmButtonProps> = ({ checklistId }) => {
             checkAt,
             checklistId,
             area,
-            responsible
+            responsible,
+            values: {}
         }
         createCheck.mutate(check, {
             onSuccess: () => {

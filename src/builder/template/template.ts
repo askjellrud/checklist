@@ -58,3 +58,19 @@ export type SelectItem = Item & {
   style: SelectItemStyle;
   options: string[];
 };
+
+// Values
+
+type ItemValue = {
+  id: string;
+};
+
+export type TextValue = ItemValue & {
+  text: string;
+};
+
+export type SelectValue = ItemValue & {
+  selected: string[];
+};
+
+export type CheckValue = TextValue | SelectValue;
