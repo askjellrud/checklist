@@ -16,7 +16,18 @@ export type Check = {
     checkAt: number | null;
     area: string;
     responsible: string;
-    values: { [key: string]: CheckValue; }
+    values: { [key: string]: CheckValue; } // TODO array
+}
+
+export const newCheck = (): Check => {
+    return {
+        id: randomId(),
+        area: "",
+        checkAt: null,
+        checklistId: "",
+        responsible: "",
+        values: {}
+    };
 }
 
 interface ConfirmButtonProps {
