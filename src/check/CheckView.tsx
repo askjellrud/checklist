@@ -68,7 +68,7 @@ export const CheckView = ({ checkId }: Props) => {
           mode='check'
           template={template}
           check={check}
-          checkChanged={(newCheck: Check) => { console.log(newCheck); setCheck(newCheck) }} />
+          checkChanged={(newCheck: Check) => setCheck(newCheck)} />
       </Flex>
 
       <Flex style={{ paddingLeft: "7%" }} paddingTop8 fullWidth>

@@ -61,15 +61,11 @@ export type SelectItem = Item & {
 
 // Values
 
-type ItemValue = {
-  id: string;
-};
-
-export type TextValue = ItemValue & {
+export type TextValue = {
   text: string;
 };
 
-export type SelectValue = ItemValue & {
+export type SelectValue = {
   selected: string[];
 };
 
