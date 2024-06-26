@@ -8,7 +8,11 @@ import { useCreateCheck } from '../api/use-create-check';
 import { useQueryClient } from '@tanstack/react-query';
 import { queryKeysChecks } from '../api/query-keys';
 import DatePicker from 'react-datepicker';
-import { CheckValue } from '../builder/template/template';
+import { CheckData } from '../builder/template/template';
+
+export type CheckDataMap = {
+    [key: string]: CheckData;
+}
 
 export type Check = {
     id: string;
@@ -16,7 +20,7 @@ export type Check = {
     checkAt: number | null;
     area: string;
     responsible: string;
-    values: { [key: string]: CheckValue; } // TODO array
+    data: CheckDataMap;
 }
 
 export const newCheck = (): Check => {
@@ -26,7 +30,7 @@ export const newCheck = (): Check => {
         checkAt: null,
         checklistId: "",
         responsible: "",
-        values: {}
+        data: {}
     };
 }
 
@@ -44,14 +48,7 @@ export const NewCheck: React.FC<ConfirmButtonProps> = ({ checklistId }) => {
 
 
     const onCreate = () => {
-        const check: Check = {
-            id: randomId(),
-            checkAt,
-            checklistId,
-            area,
-            responsible,
-            values: {}
-        }
+        const check: Check = newCheck();
         createCheck.mutate(check, {
             onSuccess: () => {
                 queryClient.invalidateQueries({ queryKey: queryKeysChecks.listByChecklist(checklistId) });

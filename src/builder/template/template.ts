@@ -61,12 +61,14 @@ export type SelectItem = Item & {
 
 // Values
 
-export type TextValue = {
-  text: string;
+export type DummyToSeeAllValueFields = keyof TextData | keyof SelectData;
+
+export type TextData = {
+  value: string;
 };
 
-export type SelectValue = {
-  selected: string[];
+export type SelectData = {
+  values: string[];
 };
 
-export type CheckValue = TextValue | SelectValue;
+export type CheckData = TextData | SelectData;

@@ -1,15 +1,15 @@
 import { ItemRenderer } from "./ItemRenderer";
 import { Form } from "react-bootstrap";
-import { TextItem, TextValue } from "../../builder/template/template";
+import { TextItem, TextData } from "../../builder/template/template";
 import { Flex } from "../../common/Flex";
 
 type Props = {
     item: TextItem;
-    value: TextValue;
-    valueChanged: (value: TextValue) => void;
+    data: TextData;
+    dataChanged: (data: TextData) => void;
 };
 
-export const TextRenderer: React.FC<Props> = ({ item, value, valueChanged }) => {
+export const TextRenderer: React.FC<Props> = ({ item, data, dataChanged }) => {
     return (
         <ItemRenderer>
             {item.label}
@@ -18,9 +18,9 @@ export const TextRenderer: React.FC<Props> = ({ item, value, valueChanged }) => 
                 {!item.isMultiline && <Form.Control
                     type="text"
                     placeholder=""
-                    value={value.text}
+                    value={data.value}
                     onChange={(event) => {
-                        valueChanged({ ...value, text: event.target.value })
+                        dataChanged({ ...data, value: event.target.value })
                     }}
                 />}
 
@@ -28,8 +28,8 @@ export const TextRenderer: React.FC<Props> = ({ item, value, valueChanged }) => 
                     as="textarea"
                     rows={5}
                     placeholder=""
-                    value={value.text}
-                    onChange={(event) => valueChanged({ ...value, text: event.target.value })}
+                    value={data.value}
+                    onChange={(event) => dataChanged({ ...data, value: event.target.value })}
                 />}
 
             </Flex>

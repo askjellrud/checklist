@@ -8,6 +8,7 @@ import styles from '../App.module.scss';
 import { useEffect, useState } from 'react';
 import { Check } from '../checklists/NewCheck';
 import { cloneDeep } from 'lodash';
+import { useSubmitCheck } from '../api/use-submit-check-data';
 
 type Props = {
   checkId: string;
@@ -16,12 +17,15 @@ type Props = {
 export const CheckView = ({ checkId }: Props) => {
   const [check, setCheck] = useState<Check>();
   const fetchedCheck = useGetCheck(checkId);
+  const submitCheck = useSubmitCheck(checkId);
+
   const { data: template } = useGetChecklist(check?.checklistId || "undefined", { enabled: !!check?.checklistId });
+
 
   useEffect(() => {
     if (fetchedCheck && fetchedCheck.isFetched && fetchedCheck.data != null) {
       const clonedCheck = cloneDeep(fetchedCheck.data);
-      clonedCheck.values = clonedCheck.values || {};
+      clonedCheck.data = clonedCheck.data || {};
       setCheck(prevCheck => {
         if (!prevCheck || prevCheck.id !== clonedCheck.id) {
           return clonedCheck;
@@ -73,7 +77,7 @@ export const CheckView = ({ checkId }: Props) => {
 
       <Flex style={{ paddingLeft: "7%" }} paddingTop8 fullWidth>
         <Button className={styles['app-btn']} onClick={() => {
-          // Keep check in state and update check.data
+          submitCheck.mutate(check.data)
         }}>Submit</Button>
       </Flex >
 

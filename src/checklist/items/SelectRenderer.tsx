@@ -1,28 +1,28 @@
 import { Form } from "react-bootstrap";
 import { ItemRenderer } from "./ItemRenderer";
 import { Flex } from "../../common/Flex";
-import { SelectItem, SelectValue } from "../../builder/template/template";
+import { SelectItem, SelectData } from "../../builder/template/template";
 import { cloneDeep } from "lodash";
 
 
 type Props = {
     item: SelectItem;
-    value: SelectValue;
-    valueChanged: (value: SelectValue) => void;
+    data: SelectData;
+    dataChanged: (data: SelectData) => void;
 };
 
-export const SelectRenderer: React.FC<Props> = ({ item, value, valueChanged }) => {
+export const SelectRenderer: React.FC<Props> = ({ item, data, dataChanged }) => {
 
     const onChange = (option: string, checked: boolean, multivalue: boolean) => {
-        const newValue = cloneDeep(value);
+        const newData = cloneDeep(data);
         if (multivalue) {
-            newValue.selected = checked ?
-                [...newValue.selected, option] :
-                newValue.selected.filter((item) => item !== option);
+            newData.values = checked ?
+                [...newData.values, option] :
+                newData.values.filter((item) => item !== option);
         } else {
-            newValue.selected = [option];
+            newData.values = [option];
         }
-        valueChanged(newValue);
+        dataChanged(newData);
     }
 
     return (
@@ -38,7 +38,7 @@ export const SelectRenderer: React.FC<Props> = ({ item, value, valueChanged }) =
                             <Form.Check
                                 type="checkbox"
                                 label={option}
-                                checked={value.selected.includes(option)}
+                                checked={data.values.includes(option)}
                                 onChange={(element) => onChange(option, element.target.checked, true)}
                             />
                         </Flex>
@@ -52,7 +52,7 @@ export const SelectRenderer: React.FC<Props> = ({ item, value, valueChanged }) =
                                 name="select-type"
                                 type="radio"
                                 label={option}
-                                checked={value.selected.includes(option)}
+                                checked={data.values.includes(option)}
                                 onChange={() => onChange(option, true, false)}
                             />
                         </Flex>
@@ -65,7 +65,7 @@ export const SelectRenderer: React.FC<Props> = ({ item, value, valueChanged }) =
                     >
                         {item.options.map((option, index) => (
                             <option key={index}
-                                selected={value.selected.includes(option)}
+                                selected={data.values.includes(option)}
                                 value={index}>{option}
                             </option>
                         ))}

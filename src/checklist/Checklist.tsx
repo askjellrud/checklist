@@ -1,5 +1,5 @@
 import { cloneDeep } from 'lodash';
-import { CheckValue, DividerItem, LabelItem, SelectItem, SelectValue, Template, TextItem, TextValue, TitleItem } from '../builder/template/template';
+import { CheckData, DividerItem, LabelItem, SelectItem, SelectData, Template, TextItem, TextData, TitleItem } from '../builder/template/template';
 import { Check } from '../checklists/NewCheck';
 import { DividerRenderer } from './items/DividerRenderer';
 import { LabelRenderer } from './items/LabelRenderer';
@@ -16,9 +16,9 @@ type Props = {
 
 export const Checklist = ({ template, check, checkChanged }: Props) => {
 
-  const valueChanged = (itemId: string, value: CheckValue) => {
+  const valueChanged = (itemId: string, data: CheckData) => {
     const newCheck = cloneDeep(check);
-    newCheck.values[itemId] = value;
+    newCheck.data[itemId] = data;
     checkChanged(newCheck);
   };
 
@@ -33,15 +33,15 @@ export const Checklist = ({ template, check, checkChanged }: Props) => {
           <TextRenderer
             key={item.id}
             item={item as TextItem}
-            value={check.values[item.id] as TextValue || { id: item.id, text: item.defaultValue }}
-            valueChanged={(value) => valueChanged(item.id, value)}
+            data={check.data[item.id] as TextData || { value: item.defaultValue } as TextData}
+            dataChanged={(value) => valueChanged(item.id, value)}
           />);
         if (item.type === 'select') return (
           <SelectRenderer
             key={item.id}
             item={item as SelectItem}
-            value={check.values[item.id] as SelectValue || { id: item.id, selected: [] }}
-            valueChanged={(value) => valueChanged(item.id, value)}
+            data={check.data[item.id] as SelectData || { values: [] } as SelectData}
+            dataChanged={(value) => valueChanged(item.id, value)}
           />);
         if (item.type === 'divider') return (
           <DividerRenderer key={item.id} item={item as DividerItem} />);
