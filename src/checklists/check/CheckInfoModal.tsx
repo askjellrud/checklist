@@ -32,7 +32,7 @@ export const CheckInfoModal = ({ show, onHide, check }: Props) => {
       <Modal.Body>
         <Flex vertical center gap32 padding32>
           <Flex paddingTop8 paddingBottom16>
-            Scan or send this code to start the check
+            Scan or share this code to start the check
           </Flex>
           <Flex onClick={() => {
             navigator.clipboard.writeText(url).then(() => {

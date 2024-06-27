@@ -19,7 +19,7 @@ export const CheckResultModal = ({ show, onHide, checklist, check }: Props) => {
   return (
     <Modal show={show} onHide={onHide}>
       <Modal.Header closeButton>
-        <Modal.Title>Results</Modal.Title>
+        <Modal.Title>Check Results</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Checklist
