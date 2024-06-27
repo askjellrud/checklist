@@ -1,12 +1,12 @@
 import { Col, Container, Row } from 'react-bootstrap';
 import { Template } from '../builder/template/template';
 import { Flex } from '../common/Flex';
-import { NewCheck } from './NewCheck';
+import { Check, NewCheck } from './NewCheck';
 import { useGetCheckListByTemplate } from '../api/use-get-check-list-by-template';
 import { colors } from '../common/colors';
 import { useState } from 'react';
-import { ChecklistInfoModal } from './ChecklistInfoModal';
-import { ChecklistResultModal } from './ChecklistResultModal';
+import { CheckInfoModal } from './check/CheckInfoModal';
+import { CheckResultModal } from './check/CheckResultModal';
 
 type Props = {
   template: Template;
@@ -14,8 +14,8 @@ type Props = {
 
 export const ChecklistRowDetails: React.FC<Props> = ({ template }) => {
   const getCheckListByTemplate = useGetCheckListByTemplate(template.id);
-  const [showChecklistInfo, setShowChecklistInfo] = useState(false);
-  const [showChecklistResult, setShowChecklistResult] = useState(false);
+  const [showCheckInfo, setShowCheckInfo] = useState<Check>();
+  const [showCheckResult, setShowCheckResult] = useState<Check>();
 
   const data = getCheckListByTemplate.data;
   if (!data) {
@@ -41,18 +41,19 @@ export const ChecklistRowDetails: React.FC<Props> = ({ template }) => {
               <Col style={{ flex: 3 }}>{check.responsible}</Col>
               <Col style={{ maxWidth: "70px", display: 'flex', justifyContent: 'center' }}>
                 <i className="bi bi-file-earmark-check" onClick={() => {
-                  setShowChecklistInfo(true);
+                  setShowCheckInfo(check);
                 }} style={{ fontSize: "18px", WebkitTextStrokeWidth: "0.3px", color: colors.themeDarker, marginRight: "10px", cursor: "pointer" }} />
-                <ChecklistInfoModal check={check} show={showChecklistInfo} onHide={() => { setShowChecklistInfo(false) }} />
+
               </Col>
               <Col style={{ maxWidth: "70px", display: 'flex', justifyContent: 'center' }}>
                 <i className="bi bi-clipboard-pulse" onClick={() => {
-                  setShowChecklistResult(true);
+                  setShowCheckResult(check);
                 }} style={{ fontSize: "18px", WebkitTextStrokeWidth: "0.3px", color: colors.themeDarker, marginRight: "10px", cursor: "pointer" }} />
-                <ChecklistResultModal checklist={template} show={showChecklistResult} onHide={() => { setShowChecklistResult(false) }} />
               </Col>
             </Row>
           ))}
+          <CheckInfoModal check={showCheckInfo} show={!!showCheckInfo} onHide={() => { setShowCheckInfo(undefined) }} />
+          <CheckResultModal checklist={template} check={showCheckResult} show={!!showCheckResult} onHide={() => { setShowCheckResult(undefined) }} />
         </Container>
       }
 

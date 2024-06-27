@@ -1,21 +1,20 @@
 import { Button, Modal } from 'react-bootstrap';
-import { Checklist } from '../checklist/Checklist';
-import { Template } from '../builder/template/template';
-import { useEffect, useState } from 'react';
-import { Check, newCheck } from './NewCheck';
+import { Checklist } from '../../checklist/Checklist';
+import { Template } from '../../builder/template/template';
+import { Check } from '../NewCheck';
 
 type Props = {
   show: boolean,
   onHide: () => void,
-  checklist: Template
+  checklist: Template | undefined,
+  check: Check | undefined;
 };
 
-export const ChecklistResultModal = ({ show, onHide, checklist }: Props) => {
-  const [check, setCheck] = useState<Check>(newCheck()); // TODO from endpoint
+export const CheckResultModal = ({ show, onHide, checklist, check }: Props) => {
 
-  useEffect(() => {
-    setCheck(newCheck())
-  }, [checklist])
+  if (!check || !checklist) {
+    return null;
+  }
 
   return (
     <Modal show={show} onHide={onHide}>
@@ -27,7 +26,7 @@ export const ChecklistResultModal = ({ show, onHide, checklist }: Props) => {
           mode='result'
           template={checklist}
           check={check}
-          checkChanged={(newCheck) => setCheck(newCheck)}
+          checkChanged={() => { }}
         />
       </Modal.Body>
       <Modal.Footer>

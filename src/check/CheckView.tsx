@@ -40,7 +40,6 @@ export const CheckView = ({ checkId }: Props) => {
   if (!check || !template) {
     return null;
   }
-  console.log(check);
 
   if (isSubmitted) {
     return <ThankYouView />

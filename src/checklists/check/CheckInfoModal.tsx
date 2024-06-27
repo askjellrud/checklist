@@ -1,19 +1,22 @@
 import QRCode from 'qrcode.react';
 import { Alert, Modal } from 'react-bootstrap';
-import { Flex } from '../common/Flex';
-import { Check } from './NewCheck';
-import { baseUrl } from '../api/urls';
+import { Flex } from '../../common/Flex';
+import { Check } from '../NewCheck';
+import { baseUrl } from '../../api/urls';
 import { useState } from 'react';
 
 type Props = {
   show: boolean,
   onHide: () => void,
-  check: Check
+  check: Check | undefined;
 };
 
-export const ChecklistInfoModal = ({ show, onHide, check }: Props) => {
-  const [showCopied, setShowCopied] = useState(false);
+export const CheckInfoModal = ({ show, onHide, check }: Props) => {
+  if (!check) {
+    return null;
+  }
 
+  const [showCopied, setShowCopied] = useState(false);
   const url = baseUrl + "?check=" + check.id;
 
   const onHideInternal = () => {
