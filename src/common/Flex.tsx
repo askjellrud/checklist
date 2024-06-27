@@ -80,6 +80,7 @@ export type FlexProps = {
   children?: ReactNode;
   style?: React.CSSProperties;
   grayBackground?: boolean;
+  justifyCenter?: boolean;
 };
 
 export const Flex = React.forwardRef<HTMLDivElement, FlexProps>(({
@@ -101,6 +102,7 @@ export const Flex = React.forwardRef<HTMLDivElement, FlexProps>(({
   alignStart = false,
   alignStretch = false,
   alignTextCenter = false,
+  justifyCenter = false,
   rightAlign = false,
   marginLeftAuto = false,
   hidden = false,
@@ -174,6 +176,7 @@ export const Flex = React.forwardRef<HTMLDivElement, FlexProps>(({
     alignStart && styles['align-start'],
     alignStretch && styles['align-stretch'],
     alignTextCenter && styles['align-center'],
+    justifyCenter && styles['justify-center'],
     hidden && styles.hidden,
     highlight && styles.highlight,
     gap4 && styles['gap-4'],

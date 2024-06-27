@@ -81,6 +81,7 @@ interface CssExports {
   "padding-top-8": string;
   "padding-top-bottom-4": string;
   "padding-top-bottom-8": string;
+  "justify-center": string;
   padding16: string;
   padding32: string;
   padding4: string;

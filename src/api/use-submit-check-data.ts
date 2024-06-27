@@ -9,7 +9,7 @@ const url = (checkId: string) =>
 export const useSubmitCheck = (checkId: string) => {
   return useMutation<CheckDataMap, Error, CheckDataMap>({
     mutationFn: async (data: CheckDataMap) => {
-      return (await axios.post(url(checkId), data, apiHeader())).data;
+      return (await axios.post(url(checkId), { data }, apiHeader())).data;
     },
   });
 };

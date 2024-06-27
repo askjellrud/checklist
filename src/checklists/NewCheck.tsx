@@ -49,6 +49,10 @@ export const NewCheck: React.FC<ConfirmButtonProps> = ({ checklistId }) => {
 
     const onCreate = () => {
         const check: Check = newCheck();
+        check.area = area;
+        check.checkAt = checkAt;
+        check.checklistId = checklistId;
+        check.responsible = responsible;
         createCheck.mutate(check, {
             onSuccess: () => {
                 queryClient.invalidateQueries({ queryKey: queryKeysChecks.listByChecklist(checklistId) });

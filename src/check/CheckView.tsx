@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import { Check } from '../checklists/NewCheck';
 import { cloneDeep } from 'lodash';
 import { useSubmitCheck } from '../api/use-submit-check-data';
+import { ThankYouView } from './ThankYou';
 
 type Props = {
   checkId: string;
@@ -18,6 +19,7 @@ export const CheckView = ({ checkId }: Props) => {
   const [check, setCheck] = useState<Check>();
   const fetchedCheck = useGetCheck(checkId);
   const submitCheck = useSubmitCheck(checkId);
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 
   const { data: template } = useGetChecklist(check?.checklistId || "undefined", { enabled: !!check?.checklistId });
 
@@ -37,6 +39,11 @@ export const CheckView = ({ checkId }: Props) => {
 
   if (!check || !template) {
     return null;
+  }
+  console.log(check);
+
+  if (isSubmitted) {
+    return <ThankYouView />
   }
 
   const checkAt = check.checkAt ? timeToSimpleDate(check.checkAt) : "?";
@@ -75,9 +82,13 @@ export const CheckView = ({ checkId }: Props) => {
           checkChanged={(newCheck: Check) => setCheck(newCheck)} />
       </Flex>
 
-      <Flex style={{ paddingLeft: "7%" }} paddingTop8 fullWidth>
+      <Flex paddingBottom32 style={{ paddingLeft: "7%" }} paddingTop8 fullWidth>
         <Button className={styles['app-btn']} onClick={() => {
-          submitCheck.mutate(check.data)
+          submitCheck.mutate(check.data, {
+            onSuccess: () => {
+              setIsSubmitted(true);
+            }
+          });
         }}>Submit</Button>
       </Flex >
 
