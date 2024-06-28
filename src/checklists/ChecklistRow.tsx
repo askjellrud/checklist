@@ -18,7 +18,9 @@ export const ChecklistRow: React.FC<Props> = ({ template }) => {
 
   return (
     <Flex fullWidth vertical>
-      <Flex fullWidth paddingLeft16 paddingRight16 paddingTop4 paddingBottom4>
+      <Flex onClick={() => {
+        setShowDetails(!showDetails);
+      }} fullWidth paddingLeft16 paddingRight16 paddingTop4 paddingBottom4>
         <Flex style={{ fontWeight: template.status === 'published' ? "400" : "200", fontSize: "18px" }} center fullWidth padding8>
           {template.name}
         </Flex>
@@ -31,9 +33,7 @@ export const ChecklistRow: React.FC<Props> = ({ template }) => {
         }
 
         {template.status === "published" &&
-          <i className="bi bi-three-dots" onClick={() => {
-            setShowDetails(!showDetails);
-          }} style={{ fontSize: "18px", WebkitTextStrokeWidth: "0.3px", color: colors.themeDarker, marginRight: "10px", cursor: "pointer" }} />
+          <i className="bi bi-three-dots" style={{ fontSize: "18px", WebkitTextStrokeWidth: "0.3px", color: colors.themeDarker, marginRight: "10px", cursor: "pointer" }} />
         }
       </Flex>
       {showDetails &&

@@ -50,15 +50,14 @@ export const ItemRenderer: React.FC<Props> = ({ item, children }) => {
             <Dropdown>
               <Dropdown.Toggle as={IconToggle}><i style={{ fontSize: "20px", WebkitTextStrokeWidth: "1px", color: "#777" }} className="bi bi-plus" /></Dropdown.Toggle>
               <Dropdown.Menu>
-
-                <Dropdown.Item onClick={() => addItemAfter(item, { id: randomId(), type: 'label', label: "" })}>
-                  <i style={{ color: "#28A745", WebkitTextStrokeWidth: "2px" }} className="bi bi-plus" />&nbsp;Label
-                </Dropdown.Item>
                 <Dropdown.Item onClick={() => addItemAfter(item, { id: randomId(), type: 'text', label: "", isMultiline: false, defaultValue: "" })}>
-                  <i style={{ color: "#28A745", WebkitTextStrokeWidth: "2px" }} className="bi bi-plus" />&nbsp;Text
+                  <i style={{ color: "#28A745", WebkitTextStrokeWidth: "2px" }} className="bi bi-plus" />&nbsp;Text input
                 </Dropdown.Item>
                 <Dropdown.Item onClick={() => addItemAfter(item, { id: randomId(), type: 'select', label: "", options: [""], style: 'checkbox' })}>
                   <i style={{ color: "#28A745", WebkitTextStrokeWidth: "2px" }} className="bi bi-plus" />&nbsp;Select
+                </Dropdown.Item>
+                <Dropdown.Item onClick={() => addItemAfter(item, { id: randomId(), type: 'label', label: "" })}>
+                  <i style={{ color: "#28A745", WebkitTextStrokeWidth: "2px" }} className="bi bi-plus" />&nbsp;Paragraph
                 </Dropdown.Item>
                 <Dropdown.Item onClick={() => addItemAfter(item, { id: randomId(), type: 'divider', label: "" })}>
                   <i style={{ color: "#28A745", WebkitTextStrokeWidth: "2px" }} className="bi bi-plus" />&nbsp;Divider
